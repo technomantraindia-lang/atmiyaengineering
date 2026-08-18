@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atmiya Engineering - Precision Engineering & Industrial Fabrication Solutions</title>
+  <meta name="description" content="Atmiya Engineering specializes in manufacturing of chemical & pharmaceutical equipment and all types of industrial fabrication works. Built with Precision. Engineered to Last.">
+  <meta name="keywords" content="Atmiya Engineering, chemical equipment, pharmaceutical equipment, industrial fabrication, pressure vessels, heat exchangers, Ahmedabad">
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-container">
+    <a href="#home" class="logo">
+      <img src="assets/images/logo.png" alt="Atmiya Engineering Logo">
+    </a>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#home"     class="nav-link active">Home</a></li>
+      <li><a href="about.html"    class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="our-work.html"  class="nav-link">Our Work</a></li>
+      <li><a href="why-choose.html"  class="nav-link">Why Choose Us</a></li>
+      <li><a href="contact.html"  class="nav-link">Contact Us</a></li>
+      <li><a href="contact.html#enquiry-form"  class="nav-link nav-cta">Get Quote</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO SLIDER ========== -->
+<section class="hero" id="home">
+
+  <!-- FULLSCREEN BACKGROUND SLIDER -->
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active" style="background-image:url('assets/images/new-1.png')"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/new-4.png')"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/new-8.png')"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/new-12.png')"></div>
+  </div>
+
+  <!-- Dark gradient overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Animated particle canvas -->
+  <canvas id="heroCanvas"></canvas>
+
+  <!-- Gold diagonal accent bar -->
+  <div class="hero-accent-bar"></div>
+
+  <!-- Content -->
+  <div class="hero-inner">
+
+    <!-- Top label -->
+    <div class="hero-label" id="heroLabel">
+      <span class="label-dot"></span>
+      <span>Chemical &amp; Pharmaceutical Equipment Specialists</span>
+    </div>
+
+    <!-- Main heading with word-by-word animation -->
+    <h1 class="hero-heading" id="heroHeading">
+      <span class="hw hw1">Built</span>
+      <span class="hw hw2">with</span>
+      <span class="hw hw3 gold">Precision.</span><br>
+      <span class="hw hw4">Engineered</span>
+      <span class="hw hw5">to</span>
+      <span class="hw hw6 gold">Last.</span>
+    </h1>
+
+    <!-- Rotating subtitle -->
+    <div class="hero-subtitle-wrap">
+      <span class="hero-sub-prefix">We specialise in&nbsp;</span>
+      <span class="hero-rotating" id="heroRotating">
+        <span class="hr-item active">Chemical Equipment Manufacturing</span>
+        <span class="hr-item">Pharmaceutical Equipment</span>
+        <span class="hr-item">Industrial Fabrication Works</span>
+        <span class="hr-item">Pressure Vessels &amp; Heat Exchangers</span>
+      </span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="hero-ctas">
+      <a href="#contact" class="hbtn hbtn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.11 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.92 2H6a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Get Free Quote
+      </a>
+      <a href="services.html" class="hbtn hbtn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Explore Services
+      </a>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="hero-stats-bar">
+      <div class="hsb-item">
+        <div class="hsb-num">500<span>+</span></div>
+        <div class="hsb-lbl">Projects Done</div>
+      </div>
+      <div class="hsb-divider"></div>
+      <div class="hsb-item">
+        <div class="hsb-num">15<span>+</span></div>
+        <div class="hsb-lbl">Years Experience</div>
+      </div>
+      <div class="hsb-divider"></div>
+      <div class="hsb-item">
+        <div class="hsb-num">50<span>+</span></div>
+        <div class="hsb-lbl">Expert Engineers</div>
+      </div>
+      <div class="hsb-divider"></div>
+      <div class="hsb-item">
+        <div class="hsb-num">100<span>%</span></div>
+        <div class="hsb-lbl">Quality Assured</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide navigation dots -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hdot active" data-slide="0"></button>
+    <button class="hdot" data-slide="1"></button>
+    <button class="hdot" data-slide="2"></button>
+    <button class="hdot" data-slide="3"></button>
+  </div>
+
+  <!-- Slide arrows -->
+  <button class="hero-arrow hero-arrow-prev" id="heroPrev">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="hero-arrow hero-arrow-next" id="heroNext">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator">
+    <div class="scroll-dot"></div>
+    <span>Scroll</span>
+  </div>
+
+</section>
+
+<!-- ========== STATS v2 ========== -->
+<section class="stats-section" id="stats">
+  <!-- Animated background mesh -->
+  <div class="stats-bg-mesh"></div>
+  <div class="stats-bg-glow stats-bg-glow-1"></div>
+  <div class="stats-bg-glow stats-bg-glow-2"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+
+    <!-- Section eyebrow -->
+    <div class="stats-eyebrow reveal">
+      <span>Our Track Record</span>
+    </div>
+
+    <div class="stats-grid-v2">
+
+      <!-- Card 1 -->
+      <div class="stat-card reveal">
+        <div class="stat-card-inner">
+          <div class="stat-ring" data-progress="92">
+            <svg class="ring-svg" viewBox="0 0 80 80">
+              <circle class="ring-bg"    cx="40" cy="40" r="34" />
+              <circle class="ring-fill"  cx="40" cy="40" r="34" data-dash="213" />
+            </svg>
+            <div class="ring-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-num"><span class="count" data-target="500">0</span><span class="sc-suffix">+</span></div>
+            <div class="stat-card-label">Projects Completed</div>
+            <div class="stat-card-bar"><div class="scb-fill" data-width="92"></div></div>
+          </div>
+        </div>
+        <div class="stat-card-tag">Across India</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="stat-card reveal">
+        <div class="stat-card-inner">
+          <div class="stat-ring" data-progress="78">
+            <svg class="ring-svg" viewBox="0 0 80 80">
+              <circle class="ring-bg"   cx="40" cy="40" r="34" />
+              <circle class="ring-fill" cx="40" cy="40" r="34" data-dash="213" />
+            </svg>
+            <div class="ring-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-num"><span class="count" data-target="15">0</span><span class="sc-suffix">+</span></div>
+            <div class="stat-card-label">Years of Excellence</div>
+            <div class="stat-card-bar"><div class="scb-fill" data-width="78"></div></div>
+          </div>
+        </div>
+        <div class="stat-card-tag">Est. 2009</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="stat-card reveal">
+        <div class="stat-card-inner">
+          <div class="stat-ring" data-progress="85">
+            <svg class="ring-svg" viewBox="0 0 80 80">
+              <circle class="ring-bg"   cx="40" cy="40" r="34" />
+              <circle class="ring-fill" cx="40" cy="40" r="34" data-dash="213" />
+            </svg>
+            <div class="ring-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-num"><span class="count" data-target="50">0</span><span class="sc-suffix">+</span></div>
+            <div class="stat-card-label">Expert Engineers</div>
+            <div class="stat-card-bar"><div class="scb-fill" data-width="85"></div></div>
+          </div>
+        </div>
+        <div class="stat-card-tag">In-House Team</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="stat-card reveal">
+        <div class="stat-card-inner">
+          <div class="stat-ring" data-progress="100">
+            <svg class="ring-svg" viewBox="0 0 80 80">
+              <circle class="ring-bg"   cx="40" cy="40" r="34" />
+              <circle class="ring-fill" cx="40" cy="40" r="34" data-dash="213" />
+            </svg>
+            <div class="ring-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-num"><span class="count" data-target="100">0</span><span class="sc-suffix">%</span></div>
+            <div class="stat-card-label">Client Satisfaction</div>
+            <div class="stat-card-bar"><div class="scb-fill" data-width="100"></div></div>
+          </div>
+        </div>
+        <div class="stat-card-tag">ISO Certified</div>
+      </div>
+
+    </div><!-- /stats-grid-v2 -->
+  </div>
+</section>
+
+<!-- ========== ABOUT v2 ========== -->
+<section class="about-section" id="about">
+  <!-- Decorative shapes -->
+  <div class="about-deco-circle about-deco-1"></div>
+  <div class="about-deco-circle about-deco-2"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+
+    <!-- Top label -->
+    <div class="about-eyebrow reveal">
+      <span class="ae-line"></span>
+      <span>Who We Are</span>
+      <span class="ae-line"></span>
+    </div>
+
+    <div class="about-grid-v2">
+
+      <!-- ===== LEFT: Image Mosaic ===== -->
+      <div class="about-mosaic reveal-left">
+        <div class="mosaic-main">
+          <img src="assets/images/new-5.png" alt="Atmiya Engineering Workshop" id="mosaicMain">
+          <div class="mosaic-main-overlay">
+            <span>Manufacturing Excellence</span>
+          </div>
+        </div>
+        <div class="mosaic-thumbs">
+          <div class="mosaic-thumb active" data-src="assets/images/new-5.png">
+            <img src="assets/images/new-5.png" alt="">
+          </div>
+          <div class="mosaic-thumb" data-src="assets/images/new-6.png">
+            <img src="assets/images/new-6.png" alt="">
+          </div>
+          <div class="mosaic-thumb" data-src="assets/images/new-7.png">
+            <img src="assets/images/new-7.png" alt="">
+          </div>
+          <div class="mosaic-thumb" data-src="assets/images/new-9.png">
+            <img src="assets/images/new-9.png" alt="">
+          </div>
+        </div>
+        <!-- Floating badge -->
+        <div class="mosaic-badge">
+          <div class="mb-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="mb-text">
+            <div class="mb-num">ISO</div>
+            <div class="mb-sub">9001:2015</div>
+          </div>
+        </div>
+        <!-- Experience ribbon -->
+        <div class="mosaic-ribbon">
+          <span class="mr-num">15+</span>
+          <span class="mr-text">Years of<br>Excellence</span>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT: Content ===== -->
+      <div class="about-content-v2 reveal-right">
+
+        <h2 class="about-heading">
+          Precision Engineering &amp;<br>
+          <span class="ah-gold">Industrial Fabrication</span> Experts
+        </h2>
+
+        <p class="about-lead">
+          Atmiya Engineering is a leading manufacturer of <strong>chemical and pharmaceutical equipment</strong> and a trusted provider of all types of industrial fabrication works — delivering excellence across Gujarat and pan-India.
+        </p>
+
+        <!-- Highlight quote -->
+        <div class="about-quote-box">
+          <div class="aqb-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          </div>
+          <p>"Manufacturing of Chemical &amp; Pharmaceutical Equipment's and All Types of Fabrication Works"</p>
+        </div>
+
+        <!-- Animated progress bars -->
+        <div class="about-skills">
+          <div class="skill-row reveal">
+            <div class="skill-top">
+              <span class="skill-name">Quality &amp; Precision</span>
+              <span class="skill-pct">98%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="98"></div></div>
+          </div>
+          <div class="skill-row reveal">
+            <div class="skill-top">
+              <span class="skill-name">On-Time Delivery</span>
+              <span class="skill-pct">95%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+          </div>
+          <div class="skill-row reveal">
+            <div class="skill-top">
+              <span class="skill-name">Client Satisfaction</span>
+              <span class="skill-pct">100%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="100"></div></div>
+          </div>
+        </div>
+
+        <!-- 4 feature pills -->
+        <div class="about-pills">
+          <div class="about-pill reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            ISO 9001:2015 Certified
+          </div>
+          <div class="about-pill reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            GMP-Compliant Pharma Fabrication
+          </div>
+          <div class="about-pill reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            In-House Design &amp; Engineering
+          </div>
+          <div class="about-pill reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Pan-India Project Execution
+          </div>
+        </div>
+
+        <a href="#contact" class="hbtn hbtn-primary" style="margin-top:8px;display:inline-flex;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Get In Touch
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INDUSTRIES v2 ========== -->
+<section class="industries-section" id="industries">
+
+  <!-- Animated BG -->
+  <div class="ind-bg-anim">
+    <div class="ind-orb ind-orb-1"></div>
+    <div class="ind-orb ind-orb-2"></div>
+    <div class="ind-grid-lines"></div>
+  </div>
+
+  <div class="container" style="position:relative;z-index:2;">
+
+    <div class="ind-header reveal">
+      <div class="ind-eyebrow">Industries We Serve</div>
+      <h2 class="ind-title">Powering <span class="ind-title-gold">Key Industries</span><br>Across India</h2>
+      <p class="ind-subtitle">From chemical plants to pharma facilities — precision-engineered solutions built for every sector</p>
+    </div>
+
+    <div class="ind-cards-wrap">
+
+      <div class="ind-card reveal">
+        <div class="ind-card-bg" style="background-image:url('assets/images/new-1.png')"></div>
+        <div class="ind-card-overlay"></div>
+        <div class="ind-card-content">
+          <h3> Transformer tank</h3>
+          <p>Reactors, vessels &amp; complete process systems for chemical plants</p>
+          <div class="ind-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="ind-card-num">01</div>
+      </div>
+
+      <div class="ind-card reveal">
+        <div class="ind-card-bg" style="background-image:url('assets/images/new-3.png')"></div>
+        <div class="ind-card-overlay"></div>
+        <div class="ind-card-content">
+          <h3>Reactor</h3>
+          <p>GMP-compliant SS tanks, mixers &amp; pharma-grade fabrications</p>
+          <div class="ind-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="ind-card-num">02</div>
+      </div>
+
+      <div class="ind-card reveal">
+        <div class="ind-card-bg" style="background-image:url('assets/images/new-5.png')"></div>
+        <div class="ind-card-overlay"></div>
+        <div class="ind-card-content">
+          <h3>Horizontal vessel</h3>
+          <p>High-pressure vessels, piping &amp; structural systems for O&amp;G plants</p>
+          <div class="ind-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="ind-card-num">03</div>
+      </div>
+
+      <div class="ind-card reveal">
+        <div class="ind-card-bg" style="background-image:url('assets/images/new-8.png')"></div>
+        <div class="ind-card-overlay"></div>
+        <div class="ind-card-content">
+          <h3>Pipe Spool</h3>
+          <p>Hygienic SS fabrications &amp; food-grade process equipment</p>
+          <div class="ind-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="ind-card-num">04</div>
+      </div>
+
+      <div class="ind-card reveal">
+        <div class="ind-card-bg" style="background-image:url('assets/images/new-11.png')"></div>
+        <div class="ind-card-overlay"></div>
+        <div class="ind-card-content">
+          <h3>distillation column</h3>
+          <p>Heat exchangers, skid systems &amp; structural steel for energy plants</p>
+          <div class="ind-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="ind-card-num">05</div>
+      </div>
+
+      <div class="ind-card reveal">
+        <div class="ind-card-bg" style="background-image:url('assets/images/new-14.png')"></div>
+        <div class="ind-card-overlay"></div>
+        <div class="ind-card-content">
+          <h3>Transformer tank</h3>
+          <p>Custom fabrication solutions for all heavy &amp; light manufacturing sectors</p>
+          <div class="ind-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="ind-card-num">06</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES v2 ========== -->
+<section class="services-section" id="services">
+
+  <div class="svc-bg-strip"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+
+    <div class="svc-header reveal">
+      <div class="svc-eyebrow">What We Do</div>
+      <h2 class="svc-title">Our <span class="svc-title-gold">Engineering</span> Services</h2>
+      <p class="svc-subtitle">Comprehensive fabrication and engineering solutions — from chemical reactors to structural steel</p>
+    </div>
+
+    <!-- Tab filter bar -->
+    <div class="svc-tabs reveal" id="svcTabs">
+      <button class="svc-tab active" data-filter="all">All Services</button>
+      <button class="svc-tab" data-filter="equipment">Equipment</button>
+      <button class="svc-tab" data-filter="fabrication">Fabrication</button>
+      <button class="svc-tab" data-filter="systems">Systems</button>
+    </div>
+
+    <div class="svc-grid" id="svcGrid">
+
+      <div class="svc-card reveal" data-category="equipment">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <span class="svc-tag">Equipment</span>
+        </div>
+        <div class="svc-num">01</div>
+        <h3>Transformer</h3>
+        <p>Precision-fabricated transformer tanks and components engineered for strength, leak-proof performance and reliable power distribution.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="equipment">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 015 5v3H7V7a5 5 0 015-5z"/><rect x="3" y="10" width="18" height="12" rx="2"/></svg>
+          </div>
+          <span class="svc-tag">Equipment</span>
+        </div>
+        <div class="svc-num">02</div>
+        <h3>Reactor</h3>
+        <p>High-performance reactors, agitators and mixing vessels designed for efficient chemical and process manufacturing.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="fabrication">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <span class="svc-tag">Fabrication</span>
+        </div>
+        <div class="svc-num">03</div>
+        <h3>Custom Fabrication</h3>
+        <p>Precision fabrication of complex components and assemblies using advanced welding and machining techniques.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="equipment">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <span class="svc-tag">Equipment</span>
+        </div>
+        <div class="svc-num">04</div>
+        <h3>Pressure Vessels &amp; Tanks</h3>
+        <p>ASME / IBR certified pressure vessels and storage tanks meeting international safety and quality standards.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="systems">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+          </div>
+          <span class="svc-tag">Systems</span>
+        </div>
+        <div class="svc-num">05</div>
+        <h3>Process Piping Systems</h3>
+        <p>Complete process piping solutions — design, fabrication, installation, testing and commissioning services.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="equipment">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="svc-tag">Equipment</span>
+        </div>
+        <div class="svc-num">06</div>
+        <h3>Heat Exchangers</h3>
+        <p>Shell &amp; tube, plate type and finned heat exchangers for efficient thermal management in industrial processes.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="fabrication">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="svc-tag">Fabrication</span>
+        </div>
+        <div class="svc-num">07</div>
+        <h3>Structural Steel Fabrication</h3>
+        <p>Heavy structural fabrication for industrial platforms, mezzanine floors, support structures and buildings.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+      <div class="svc-card reveal" data-category="systems">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span class="svc-tag">Systems</span>
+        </div>
+        <div class="svc-num">08</div>
+        <h3>Annual Maintenance Contracts</h3>
+        <p>Comprehensive AMC services ensuring optimal equipment performance, safety compliance and extended service life.</p>
+        <div class="svc-card-footer">
+          <a href="#contact" class="svc-link">Get Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="svc-card-glow"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">Our Work</h2>
+      <div class="title-divider"></div>
+      <p class="section-subtitle">A showcase of our precision engineering and fabrication projects</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-index="0">
+        <img src="assets/images/new-1.png" alt="Project 1">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="1">
+        <img src="assets/images/new-2.png" alt="Project 2">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="2">
+        <img src="assets/images/new-3.png" alt="Project 3">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="3">
+        <img src="assets/images/new-4.png" alt="Project 4">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="4">
+        <img src="assets/images/new-5.png" alt="Project 5">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="5">
+        <img src="assets/images/new-6.png" alt="Project 6">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="6">
+        <img src="assets/images/new-7.png" alt="Project 7">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="7">
+        <img src="assets/images/new-8.png" alt="Project 8">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="8">
+        <img src="assets/images/new-9.png" alt="Project 9">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="9">
+        <img src="assets/images/new-10.png" alt="Project 10">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="10">
+        <img src="assets/images/new-11.png" alt="Project 11">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gallery-item reveal" data-index="11">
+        <img src="assets/images/new-12.png" alt="Project 12">
+        <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-view-all reveal">
+      <p style="color:var(--text-light);margin-bottom:16px;">Showing 12 of 50+ projects</p>
+      <a href="#contact" class="btn btn-outline">View All Projects →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE v2 — DYNAMIC ========== -->
+<section class="why-v2-section" id="why">
+
+  <!-- Animated background layers -->
+  <div class="wv2-bg-grid"></div>
+  <div class="wv2-orb wv2-orb-1"></div>
+  <div class="wv2-orb wv2-orb-2"></div>
+  <div class="wv2-orb wv2-orb-3"></div>
+  <canvas class="wv2-particles" id="whyCanvas"></canvas>
+
+  <div class="container" style="position:relative;z-index:2;">
+
+    <!-- ===== Section Header ===== -->
+    <div class="wv2-header reveal">
+      <div class="wv2-eyebrow">
+        <span class="wv2-eyebrow-line"></span>
+        <span>Why Choose Us</span>
+        <span class="wv2-eyebrow-line"></span>
+      </div>
+      <h2 class="wv2-title">
+        Why Industry Leaders<br>
+        <span class="wv2-title-gold">Choose Atmiya</span>
+      </h2>
+      <p class="wv2-subtitle">From concept to commissioning, we deliver end-to-end engineering excellence. Our commitment to safety, quality, and on-time performance makes us the trusted partner for industries across India.</p>
+    </div>
+
+    <!-- ===== Live Counter Bar ===== -->
+    <div class="wv2-counter-bar reveal">
+      <div class="wv2-counter-item">
+        <div class="wv2-counter-num"><span class="wv2-count" data-target="500">0</span><span>+</span></div>
+        <div class="wv2-counter-label">Projects Done</div>
+      </div>
+      <div class="wv2-counter-sep"></div>
+      <div class="wv2-counter-item">
+        <div class="wv2-counter-num"><span class="wv2-count" data-target="15">0</span><span>+</span></div>
+        <div class="wv2-counter-label">Years Experience</div>
+      </div>
+      <div class="wv2-counter-sep"></div>
+      <div class="wv2-counter-item">
+        <div class="wv2-counter-num"><span class="wv2-count" data-target="50">0</span><span>+</span></div>
+        <div class="wv2-counter-label">Expert Engineers</div>
+      </div>
+      <div class="wv2-counter-sep"></div>
+      <div class="wv2-counter-item">
+        <div class="wv2-counter-num"><span class="wv2-count" data-target="100">0</span><span>%</span></div>
+        <div class="wv2-counter-label">Client Satisfaction</div>
+      </div>
+    </div>
+
+    <!-- ===== Feature Cards ===== -->
+    <div class="wv2-cards-grid">
+
+      <!-- Card 1 -->
+      <div class="wv2-card reveal" style="--delay:0s">
+        <div class="wv2-card-top-bar"></div>
+        <div class="wv2-card-icon-wrap">
+          <div class="wv2-card-icon-ring"></div>
+          <div class="wv2-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+        <div class="wv2-card-num">01</div>
+        <h3 class="wv2-card-title">Quality Certified</h3>
+        <p class="wv2-card-desc">ISO 9001:2015 certified quality management system ensuring consistent excellence across every project.</p>
+        <div class="wv2-card-progress">
+          <div class="wv2-progress-bar"><div class="wv2-progress-fill" data-width="98" style="width:0%"></div></div>
+          <span class="wv2-progress-label">98% Quality Score</span>
+        </div>
+        <div class="wv2-card-shine"></div>
+        <div class="wv2-card-glow"></div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="wv2-card reveal" style="--delay:0.1s">
+        <div class="wv2-card-top-bar"></div>
+        <div class="wv2-card-icon-wrap">
+          <div class="wv2-card-icon-ring"></div>
+          <div class="wv2-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+        </div>
+        <div class="wv2-card-num">02</div>
+        <h3 class="wv2-card-title">On-Time Delivery</h3>
+        <p class="wv2-card-desc">Rigorous project management ensuring deadlines are met without compromising quality or safety standards.</p>
+        <div class="wv2-card-progress">
+          <div class="wv2-progress-bar"><div class="wv2-progress-fill" data-width="95" style="width:0%"></div></div>
+          <span class="wv2-progress-label">95% On-Time Rate</span>
+        </div>
+        <div class="wv2-card-shine"></div>
+        <div class="wv2-card-glow"></div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="wv2-card reveal" style="--delay:0.2s">
+        <div class="wv2-card-top-bar"></div>
+        <div class="wv2-card-icon-wrap">
+          <div class="wv2-card-icon-ring"></div>
+          <div class="wv2-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+        </div>
+        <div class="wv2-card-num">03</div>
+        <h3 class="wv2-card-title">Custom Solutions</h3>
+        <p class="wv2-card-desc">Tailor-made engineering designs that precisely meet your specific process and operational requirements.</p>
+        <div class="wv2-card-progress">
+          <div class="wv2-progress-bar"><div class="wv2-progress-fill" data-width="100" style="width:0%"></div></div>
+          <span class="wv2-progress-label">100% Customised</span>
+        </div>
+        <div class="wv2-card-shine"></div>
+        <div class="wv2-card-glow"></div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="wv2-card reveal" style="--delay:0.3s">
+        <div class="wv2-card-top-bar"></div>
+        <div class="wv2-card-icon-wrap">
+          <div class="wv2-card-icon-ring"></div>
+          <div class="wv2-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+        </div>
+        <div class="wv2-card-num">04</div>
+        <h3 class="wv2-card-title">Safety First</h3>
+        <p class="wv2-card-desc">Comprehensive safety protocols protecting both people and assets at every stage of every project.</p>
+        <div class="wv2-card-progress">
+          <div class="wv2-progress-bar"><div class="wv2-progress-fill" data-width="100" style="width:0%"></div></div>
+          <span class="wv2-progress-label">Zero Incident Goal</span>
+        </div>
+        <div class="wv2-card-shine"></div>
+        <div class="wv2-card-glow"></div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="wv2-card reveal" style="--delay:0.4s">
+        <div class="wv2-card-top-bar"></div>
+        <div class="wv2-card-icon-wrap">
+          <div class="wv2-card-icon-ring"></div>
+          <div class="wv2-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+        </div>
+        <div class="wv2-card-num">05</div>
+        <h3 class="wv2-card-title">Expert Team</h3>
+        <p class="wv2-card-desc">50+ skilled engineers and fabricators with decades of combined hands-on industry experience.</p>
+        <div class="wv2-card-progress">
+          <div class="wv2-progress-bar"><div class="wv2-progress-fill" data-width="90" style="width:0%"></div></div>
+          <span class="wv2-progress-label">50+ In-House Experts</span>
+        </div>
+        <div class="wv2-card-shine"></div>
+        <div class="wv2-card-glow"></div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="wv2-card reveal" style="--delay:0.5s">
+        <div class="wv2-card-top-bar"></div>
+        <div class="wv2-card-icon-wrap">
+          <div class="wv2-card-icon-ring"></div>
+          <div class="wv2-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+        </div>
+        <div class="wv2-card-num">06</div>
+        <h3 class="wv2-card-title">Pan-India Service</h3>
+        <p class="wv2-card-desc">Nationwide project execution with responsive after-sales support and maintenance across India.</p>
+        <div class="wv2-card-progress">
+          <div class="wv2-progress-bar"><div class="wv2-progress-fill" data-width="100" style="width:0%"></div></div>
+          <span class="wv2-progress-label">Pan-India Coverage</span>
+        </div>
+        <div class="wv2-card-shine"></div>
+        <div class="wv2-card-glow"></div>
+      </div>
+
+    </div><!-- /wv2-cards-grid -->
+
+    <!-- ===== Bottom CTA strip ===== -->
+    <div class="wv2-cta-strip reveal">
+      <div class="wv2-cta-text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Ready to experience the Atmiya difference?
+      </div>
+      <a href="#contact" class="wv2-cta-btn">
+        Get a Free Quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== CTA BANNER v2 — DYNAMIC ========== -->
+<section class="cta-v2-banner" id="cta">
+
+  <!-- Animated background -->
+  <div class="cta-v2-bg-waves"></div>
+  <canvas class="cta-v2-particles" id="ctaCanvas"></canvas>
+  <div class="cta-v2-orb cta-v2-orb-1"></div>
+  <div class="cta-v2-orb cta-v2-orb-2"></div>
+
+  <div class="container" style="position:relative;z-index:3;">
+
+    <div class="cta-v2-inner reveal">
+
+      <!-- Eyebrow badge -->
+      <div class="cta-v2-badge">
+        <span class="cta-v2-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </span>
+        <span>Let's Build Something Great Together</span>
+      </div>
+
+      <!-- Main title with typing effect -->
+      <h2 class="cta-v2-title">
+        Ready to Start Your <span class="cta-v2-typed" id="ctaTyped">Project</span><span class="cta-v2-cursor">|</span>
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="cta-v2-subtitle">
+        Let's discuss how our precision engineering solutions can drive your operational success
+      </p>
+
+      <!-- Floating stat badges -->
+      <div class="cta-v2-stats">
+        <div class="cta-v2-stat-badge cta-v2-stat-1">
+          <div class="cta-v2-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="cta-v2-stat-text">
+            <div class="cta-v2-stat-num">ISO</div>
+            <div class="cta-v2-stat-lbl">Certified</div>
+          </div>
+        </div>
+        <div class="cta-v2-stat-badge cta-v2-stat-2">
+          <div class="cta-v2-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="cta-v2-stat-text">
+            <div class="cta-v2-stat-num">24/7</div>
+            <div class="cta-v2-stat-lbl">Support</div>
+          </div>
+        </div>
+        <div class="cta-v2-stat-badge cta-v2-stat-3">
+          <div class="cta-v2-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="cta-v2-stat-text">
+            <div class="cta-v2-stat-num">500+</div>
+            <div class="cta-v2-stat-lbl">Projects</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="cta-v2-buttons">
+        <a href="#contact" class="cta-v2-btn cta-v2-btn-primary">
+          <span class="cta-v2-btn-bg"></span>
+          <span class="cta-v2-btn-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.11 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.92 2H6a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Get Free Quote
+          </span>
+          <span class="cta-v2-btn-shine"></span>
+        </a>
+        <a href="services.html" class="cta-v2-btn cta-v2-btn-secondary">
+          <span class="cta-v2-btn-bg"></span>
+          <span class="cta-v2-btn-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            View Our Services
+          </span>
+          <span class="cta-v2-btn-shine"></span>
+        </a>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="cta-v2-trust">
+        <div class="cta-v2-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>Free Consultation</span>
+        </div>
+        <div class="cta-v2-trust-sep"></div>
+        <div class="cta-v2-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>No Obligation Quote</span>
+        </div>
+        <div class="cta-v2-trust-sep"></div>
+        <div class="cta-v2-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>24-Hour Response Time</span>
+        </div>
+      </div>
+
+    </div><!-- /cta-v2-inner -->
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="title-divider"></div>
+      <p class="section-subtitle">We'd love to hear from you. Tell us about your project requirements.</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Info cards -->
+      <div class="contact-info reveal-left">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Address</h4>
+            <p>Horizon industrial park<br>plot.no. 298, Bamangam Vadodara<br>Gujarat – 391243</p>
+            <small>Pan-India project execution</small>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.11 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.92 2H6a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 70696 85356</p>
+            <small>Mon–Sat, 9AM–6PM</small>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p>atmiyaengineering26@gmail.com</p>
+            <small>We reply within 24 hours</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-wrap reveal-right">
+        <h3>Send Us a Message</h3>
+        <p>Fill in the details below and our team will get back to you shortly.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Chemical Equipment Manufacturing</option>
+              <option>Pharmaceutical Equipment</option>
+              <option>Custom Fabrication</option>
+              <option>Pressure Vessels &amp; Tanks</option>
+              <option>Process Piping Systems</option>
+              <option>Heat Exchangers</option>
+              <option>Structural Steel Fabrication</option>
+              <option>Annual Maintenance Contract</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Describe your project requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ========== SITE FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Column 1: Logo & Overview -->
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/logo.png" alt="ATMIYA ENGINEERING Logo">
+        </a>
+        <p>Precision engineering and industrial fabrication solutions built with innovation, quality and commitment to last.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><a href="index.html"><span class="chevron">&gt;</span> Home</a></li>
+          <li><a href="about.html"><span class="chevron">&gt;</span> About Us</a></li>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Products</a></li>
+          <li><a href="our-work.html"><span class="chevron">&gt;</span> Our Work</a></li>
+          <li><a href="why-choose.html"><span class="chevron">&gt;</span> Why Choose Us</a></li>
+          <li><a href="contact.html"><span class="chevron">&gt;</span> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Our Services -->
+      <div class="footer-col">
+        <h4>OUR SERVICES</h4>
+        <ul>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Process Equipment</a></li>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Heat Exchangers</a></li>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Pressure Vessels</a></li>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Storage Tanks</a></li>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Piping Spools</a></li>
+          <li><a href="services.html"><span class="chevron">&gt;</span> Custom Fabrication</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Info -->
+      <div class="footer-col">
+        <h4>CONTACT INFO</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+917069685356">+91 70696 85356</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:atmiyaengineering26@gmail.com">atmiyaengineering26@gmail.com</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-pin-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Horizon industrial park<br>plot.no.298, Bamangam Vadodara<br>Gujarat – 391243</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bottom Bar -->
+    <div class="copyright">
+      <p>&copy; 2024 <span class="footer-gold-brand">ATMIYA ENGINEERING</span>. All Rights Reserved. <span class="foot-sep">|</span> <a href="#">Privacy Policy</a> <span class="foot-sep">|</span> <a href="#">Terms &amp; Conditions</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== LIGHTBOX ========== -->
+<div id="lightbox">
+  <button id="lb-close" title="Close">&#10005;</button>
+  <button class="lb-btn" id="lb-prev">&#8249;</button>
+  <img id="lightbox-img" src="" alt="Project Image">
+  <button class="lb-btn" id="lb-next">&#8250;</button>
+  <div id="lb-counter"></div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div id="toast">&#10003; Thank you! We'll contact you soon.</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Choose Us - Atmiya Engineering</title>
+  <meta name="description" content="Why choose Atmiya Engineering for fabrication, pressure vessels, structural steel, and precision industrial engineering.">
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+  <style>
+    :root { --gold:#d6a91d; --gold2:#f0c340; --navy:#071832; --navy2:#102445; --ink:#14213a; --muted:#5d6b82; --line:#e2e7ef; --soft:#f7f9fc; --shadow:0 14px 34px rgba(8,26,53,.12); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:"Segoe UI", Arial, sans-serif; color:var(--ink); background:#fff; line-height:1.55; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+    ul { list-style:none; }
+    .container { width:min(1160px, calc(100% - 48px)); margin:0 auto; }
+    .gold { color:var(--gold); }
+    .icon-sprite { position:absolute; width:0; height:0; overflow:hidden; }
+    .icon svg { width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:2.15; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+
+
+    .btn-row { display:flex; gap:16px; flex-wrap:wrap; }
+    .btn { min-height:46px; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:0 25px; border-radius:4px; font-size:12px; font-weight:900; }
+    .btn-primary { background:var(--gold); color:var(--navy); box-shadow:0 12px 28px rgba(214,169,29,.31); }
+    .btn-outline { color:#fff; border:2px solid rgba(255,255,255,.78); background:rgba(255,255,255,.07); }
+
+    .stats-bar { position:relative; z-index:5; margin:-62px auto 0; width:min(1000px, calc(100% - 48px)); background:linear-gradient(90deg,#071832,#102445,#071832); border:1px solid rgba(255,255,255,.18); color:#fff; border-radius:8px; box-shadow:0 20px 48px rgba(8,26,53,.28); display:grid; grid-template-columns:repeat(4,1fr); padding:26px 30px; }
+    .stat-item { display:flex; align-items:center; gap:19px; padding:0 25px; border-right:1px solid rgba(255,255,255,.22); }
+    .stat-item:last-child { border-right:0; }
+    .stat-icon { width:62px; height:62px; color:var(--gold); flex:0 0 auto; padding:7px; border-radius:12px; background:rgba(214,169,29,.08); }
+    .stat-item strong { display:block; color:#fff; font-size:24px; line-height:1; font-weight:900; }
+    .stat-item span { color:rgba(255,255,255,.75); font-size:12px; font-weight:800; line-height:1.25; }
+
+    .section { padding:66px 0; }
+    .section-head { text-align:center; margin-bottom:30px; }
+    .eyebrow { color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:11px; font-weight:900; margin-bottom:6px; }
+    .title { color:var(--ink); font-size:clamp(30px,4vw,40px); line-height:1.12; font-weight:900; }
+    .sub { max-width:720px; margin:10px auto 0; color:var(--muted); font-size:13px; font-weight:650; }
+
+    .promise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1030px; margin:0 auto; }
+    .promise-card { background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 12px 30px rgba(8,26,53,.09); padding:28px 28px; display:grid; grid-template-columns:74px 1fr; gap:22px; align-items:center; min-height:142px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .promise-card:hover { transform:translateY(-4px); box-shadow:0 18px 38px rgba(8,26,53,.13); border-color:rgba(214,169,29,.45); }
+    .promise-icon { width:70px; height:70px; color:var(--gold); background:#fff9e7; border:1px solid rgba(214,169,29,.38); border-radius:50%; padding:13px; box-shadow:0 8px 18px rgba(214,169,29,.13); }
+    .promise-card h3 { color:var(--navy); font-size:15px; font-weight:900; margin-bottom:6px; }
+    .promise-card p { color:var(--muted); font-size:12px; font-weight:650; line-height:1.55; }
+
+    .foundation { background:linear-gradient(180deg,#fff,#f7f9fc); padding:44px 0 68px; }
+    .foundation-grid { display:grid; grid-template-columns:.95fr 1fr; gap:44px; align-items:center; }
+    .photo-stack { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .photo-stack .main { grid-column:1 / -1; height:310px; }
+    .photo-stack .small { height:170px; }
+    .photo-stack img { width:100%; height:100%; object-fit:cover; object-position:center; border-radius:10px; box-shadow:0 14px 30px rgba(8,26,53,.16); border:1px solid rgba(255,255,255,.82); }
+    .strength-head { margin-bottom:22px; }
+    .strength-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    .strength-card { background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 9px 24px rgba(8,26,53,.08); padding:24px; display:grid; grid-template-columns:68px 1fr; gap:20px; align-items:start; min-height:148px; }
+    .strength-icon { width:64px; height:64px; color:var(--gold); background:var(--navy); border-radius:8px; padding:14px; box-shadow:0 10px 20px rgba(8,26,53,.18); }
+    .strength-card h3 { color:var(--navy); font-size:14px; font-weight:900; margin-bottom:7px; }
+    .strength-card p { color:var(--muted); font-size:12px; font-weight:650; line-height:1.55; }
+
+    .dark { background:linear-gradient(135deg,#071832,#102445 58%,#071832); color:#fff; }
+    .dark .title { color:#fff; }
+    .quality-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
+    .quality-card { border:1px solid rgba(255,255,255,.25); border-radius:9px; padding:32px 18px; min-height:235px; text-align:center; background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); box-shadow:inset 0 1px 0 rgba(255,255,255,.08); }
+    .quality-icon { width:78px; height:78px; color:var(--gold); margin:0 auto 18px; padding:12px; border-radius:50%; background:rgba(214,169,29,.09); border:1px solid rgba(214,169,29,.28); }
+    .quality-card h3 { color:#fff; font-size:15px; line-height:1.22; margin-bottom:10px; font-weight:900; }
+    .quality-card p { color:rgba(255,255,255,.73); font-size:12px; font-weight:650; line-height:1.5; }
+
+    .equipment-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:18px; }
+    .equip-card { background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 10px 26px rgba(8,26,53,.08); overflow:hidden; text-align:center; transition:transform .2s ease, box-shadow .2s ease; }
+    .equip-card:hover { transform:translateY(-4px); box-shadow:0 18px 38px rgba(8,26,53,.13); }
+    .equip-img { height:150px; background:linear-gradient(145deg,#eef2f7,#fff); display:grid; place-items:center; border-bottom:1px solid #e9eef6; padding:0; overflow:hidden; }
+    .equip-img img { width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(1.06) contrast(1.04); }
+    .equip-img img[src*="new-"] { object-fit:contain; padding:12px; filter:drop-shadow(0 12px 16px rgba(8,26,53,.18)); }
+    .equip-card h3 { color:var(--navy); font-size:14px; line-height:1.25; padding:13px 10px 5px; font-weight:900; }
+    .equip-card p { color:var(--muted); font-size:11.5px; font-weight:650; line-height:1.45; padding:0 12px 18px; }
+
+    .clients-row { display:grid; grid-template-columns:1.15fr 1fr; gap:28px; align-items:stretch; }
+    .logo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .client-card { border:1px solid var(--line); border-radius:7px; min-height:118px; display:grid; place-items:center; text-align:center; padding:16px; box-shadow:0 7px 18px rgba(8,26,53,.05); background:#fff; }
+    .client-mark { color:#17315b; font-weight:950; font-size:22px; letter-spacing:-1px; margin-bottom:8px; }
+    .client-card p { color:var(--navy); font-size:12px; font-weight:900; line-height:1.25; }
+    .support-box { border:1px solid var(--line); border-radius:8px; background:#fff; box-shadow:0 8px 22px rgba(8,26,53,.06); padding:26px 22px; text-align:center; }
+    .support-box h3 { color:var(--navy); font-size:18px; margin-bottom:22px; }
+    .industry-icons { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+    .industry-icon { width:58px; height:58px; color:var(--navy); margin:0 auto 10px; padding:10px; border-radius:50%; background:#fff8e1; border:1px solid rgba(214,169,29,.32); }
+    .industry-icons p { color:var(--navy); font-size:11px; line-height:1.2; font-weight:900; }
+
+    .process { padding-top:26px; }
+    .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:48px; max-width:1060px; margin:0 auto; position:relative; }
+    .step { text-align:center; position:relative; padding-top:30px; }
+    .step::after { content:""; position:absolute; top:32px; left:65%; width:75%; border-top:2px dotted #8791a0; }
+    .step:last-child::after { display:none; }
+    .num { position:absolute; top:0; left:20px; width:42px; height:42px; border-radius:50%; background:var(--navy); color:var(--gold2); display:grid; place-items:center; font-weight:950; border:4px solid #fff; box-shadow:0 8px 18px rgba(8,26,53,.14); }
+    .step-icon { width:84px; height:84px; color:var(--gold); margin:0 auto 15px; padding:12px; border-radius:50%; background:#fff9e7; border:1px solid rgba(214,169,29,.34); }
+    .step h3 { color:var(--navy); font-size:15px; font-weight:900; margin-bottom:8px; }
+    .step p { color:var(--muted); font-size:12px; font-weight:650; line-height:1.48; }
+
+    .cta { margin-top:18px; color:#fff; background:linear-gradient(90deg,rgba(7,24,50,.98),rgba(7,24,50,.9),rgba(7,24,50,.45)), url("assets/images/new-2.png") center right / cover no-repeat; padding:52px 0; }
+    .cta h2 { font-size:clamp(30px,4vw,42px); line-height:1.08; margin-bottom:14px; max-width:520px; }
+    .cta p { color:rgba(255,255,255,.78); max-width:520px; font-weight:650; margin-bottom:22px; }
+
+    .footer-logo {
+      display: inline-block;
+      margin-bottom: 18px;
+      text-decoration: none;
+      overflow: visible;
+    }
+    .footer-logo img {
+      height: 95px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+      transform-origin: left center;
+    }
+    .footer-logo:hover img {
+      transform: scale(1.18);
+      filter: drop-shadow(0 8px 24px rgba(201, 162, 39, 0.45));
+    }
+
+
+    @media (max-width:1080px) {
+      .promise-grid, .quality-grid { grid-template-columns:repeat(2,1fr); }
+      .equipment-grid { grid-template-columns:repeat(3,1fr); }
+      .foundation-grid, .clients-row { grid-template-columns:1fr; }
+      .stats-bar { grid-template-columns:repeat(2,1fr); gap:16px; }
+      .stat-item:nth-child(2) { border-right:0; }
+      .process-grid { gap:20px; }
+      .step::after { display:none; }
+      .footer-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:760px) {
+      .container { width:min(100% - 32px,1160px); }
+      .logo img { height:62px; }
+      .nav-inner { align-items:flex-start; }
+      .nav-links { flex-wrap:wrap; justify-content:flex-end; gap:8px 14px; font-size:11px; }
+      .nav-links li:nth-child(4), .nav-links li:nth-child(5), .nav-links li:nth-child(6) { display:none; }
+      .hero { min-height:630px; align-items:flex-start; padding-top:130px; background-position:62% center; }
+      .hero-copy { padding-top:0; }
+      .stats-bar, .promise-grid, .strength-grid, .quality-grid, .equipment-grid, .logo-grid, .industry-icons, .process-grid, .footer-grid { grid-template-columns:1fr; }
+      .stats-bar { width:100%; margin-top:0; border-radius:0; }
+      .stat-item { border-right:0; border-bottom:1px solid rgba(255,255,255,.16); padding:0 0 16px; }
+      .stat-item:last-child { border-bottom:0; }
+      .section { padding:48px 0; }
+      .promise-card, .strength-card { grid-template-columns:1fr; text-align:center; }
+      .promise-icon, .strength-icon { margin:0 auto; }
+      .photo-stack .main, .photo-stack .small { height:190px; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-workshop" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/><circle cx="5" cy="10" r="2.2"/><path d="M2 20v-1.4A4.2 4.2 0 0 1 6 14.5"/><circle cx="19" cy="10" r="2.2"/><path d="M22 20v-1.4a4.2 4.2 0 0 0-4-4.1"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/><path d="M8.5 12l2.4 2.4L16 9"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="i-price" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 8h8M9 12h5a3 3 0 0 1-3 3H9l5 4"/><path d="M9 8a3 3 0 0 1 3 3"/></symbol>
+    <symbol id="i-design" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h3v3H8zM13 13h3v3h-3z"/><path d="M11 9.5h4M14.5 11v4M5 16l4-4M19 8l-4 4"/></symbol>
+    <symbol id="i-support" viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M4 13v3a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2zM20 13v3a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2z"/><path d="M14 20h2a4 4 0 0 0 4-4"/></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/><path d="M9.5 8l1.6 1.6L15 6"/></symbol>
+    <symbol id="i-engineer" viewBox="0 0 24 24"><path d="M12 2v5"/><path d="M5 10a7 7 0 0 1 14 0"/><path d="M4 10h16v4a8 8 0 0 1-16 0z"/><path d="M8 21v-2a4 4 0 0 1 8 0v2"/></symbol>
+    <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M5 10a7 7 0 0 1 14 0"/><path d="M4 10h16v4a8 8 0 0 1-16 0z"/><path d="M8 21v-2a4 4 0 0 1 8 0v2"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M8 4h8l1 3H7z"/><path d="M6 5H5a2 2 0 0 0-2 2v13h18V7a2 2 0 0 0-2-2h-1"/><path d="M8 12h5M8 16h8"/><path d="M15 12l1.2 1.2L19 10"/></symbol>
+    <symbol id="i-ppe" viewBox="0 0 24 24"><path d="M12 2v5"/><path d="M5 10a7 7 0 0 1 14 0"/><path d="M4 10h16v4a8 8 0 0 1-16 0z"/><path d="M14 16l2 2 4-5"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a8 8 0 0 0 0-6l2-1.5-2-3.4-2.4 1a8 8 0 0 0-5-3l-.4-2.6h-4l-.4 2.6a8 8 0 0 0-5 3l-2.4-1-2 3.4L4.6 9a8 8 0 0 0 0 6l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 5 3l.4 2.6h4l.4-2.6a8 8 0 0 0 5-3l2.4 1 2-3.4z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h12a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/><path d="M7 9h6M7 12h4"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24"><path d="M6 4h11l2 2v14H6z"/><path d="M16 4v4h3"/><path d="M9 10h6M9 14h5M9 18h3"/></symbol>
+    <symbol id="i-fabrication" viewBox="0 0 24 24"><path d="M16 4l4 4-9 9H7v-4z"/><path d="M15 5l4 4"/><path d="M6 19h12"/><circle cx="7" cy="7" r="2"/><path d="M4 12l2-3 3 3"/></symbol>
+    <symbol id="i-delivery" viewBox="0 0 24 24"><path d="M3 7h12v10H3z"/><path d="M15 11h4l2 3v3h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l5 4V9l5 4V9l4 3v9"/><path d="M8 17h2M12 17h2M16 17h2"/></symbol>
+    <symbol id="i-lab" viewBox="0 0 24 24"><path d="M9 2h6"/><path d="M10 2v6l-5 10a3 3 0 0 0 2.7 4h8.6A3 3 0 0 0 19 18L14 8V2"/><path d="M7 17h10"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21h16"/><path d="M6 21V5h12v16"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2.1z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-location" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  </svg>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Atmiya Engineering Logo">
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="our-work.html" class="nav-link">Our Work</a></li>
+        <li><a href="why-choose.html" class="nav-link active">Why Choose Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        <li><a href="contact.html#enquiry-form" class="nav-link nav-cta">Get a Quote</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO BANNER SECTION ========== -->
+  <section class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="container">
+      <div class="contact-hero-grid">
+        <div class="contact-hero-left reveal">
+          <div class="contact-hero-crumbs">
+            <a href="index.html">HOME</a> / <span>WHY CHOOSE US</span>
+          </div>
+          <div class="contact-pill-badge">ENGINEERED TO PERFECTION</div>
+          <h1 class="contact-hero-title">
+            Why Choose Us <br><span class="gold">Built on Trust. Driven by Precision.</span>
+          </h1>
+          <p class="contact-hero-sub">
+            At ATMIYA Engineering, we deliver dependable and innovative fabrication solutions with uncompromising quality, safety, and timely execution. Your vision, engineered to perfection.
+          </p>
+          <div class="contact-hero-btns">
+            <a href="contact.html#enquiry-form" class="btn-contact-gold">
+              Get a Quote 
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="our-work.html" class="btn-contact-outline">
+              Explore Our Work
+            </a>
+          </div>
+        </div>
+        <div class="contact-hero-right reveal">
+          <div class="contact-hero-img-wrap">
+            <img src="assets/images/new-12.png" alt="Why Choose Atmiya Engineering">
+            <div class="contact-hero-img-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-bar" aria-label="Why choose highlights">
+    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-workshop"></use></svg></div><div><strong>5000+</strong><span>SQ. FT. Workshop</span></div></div>
+    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-team"></use></svg></div><div><strong>Skilled</strong><span>Technical Team</span></div></div>
+    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"></use></svg></div><div><strong>Quality</strong><span>Assured</span></div></div>
+    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><div><strong>On-Time</strong><span>Delivery</span></div></div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Promise</div>
+          <h2 class="title">Why Industry Leaders <span class="gold">Choose Atmiya</span></h2>
+          <p class="sub">Our commitment to excellence makes us the preferred fabrication partner for leading industries.</p>
+        </div>
+        <div class="promise-grid">
+          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-team"></use></svg></div><div><h3>Experienced Team</h3><p>Highly skilled engineers and technicians with years of hands-on experience in industrial fabrication and project execution.</p></div></article>
+          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-price"></use></svg></div><div><h3>Competitive Pricing</h3><p>Transparent pricing with cost-effective solutions that deliver maximum value without compromising on quality.</p></div></article>
+          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><div><h3>On-Time Delivery</h3><p>We prioritize deadlines and ensure timely project completion through efficient planning and execution.</p></div></article>
+          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-design"></use></svg></div><div><h3>Custom Design Solutions</h3><p>Tailored fabrication and engineering solutions as per your specific requirements and industry standards.</p></div></article>
+          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-support"></use></svg></div><div><h3>Strong Customer Support</h3><p>Dedicated support team that stays with you from inquiry to after-sales service and beyond.</p></div></article>
+          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-medal"></use></svg></div><div><h3>Precision Engineering &amp; Quality Focus</h3><p>Advanced processes, strict quality control and attention to detail in every stage of fabrication.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="foundation">
+      <div class="container foundation-grid">
+        <div class="photo-stack">
+          <img class="main" src="assets/images/new-3.png" alt="Industrial pressure vessel workshop">
+          <img class="small" src="assets/images/new-4.png" alt="Fabrication work">
+          <img class="small" src="assets/images/new-5.png" alt="Technical team">
+          <img class="small" src="assets/images/new-6.png" alt="Structural fabrication">
+        </div>
+        <div>
+          <div class="strength-head">
+            <div class="eyebrow">Our Foundation</div>
+            <h2 class="title">Our Core Strengths</h2>
+            <p class="sub" style="margin-left:0">Our 5000+ sq. ft. workshop is backed by skilled manpower and robust processes to ensure precision, quality, and timely delivery.</p>
+          </div>
+          <div class="strength-grid">
+            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-engineer"></use></svg></div><div><h3>Production Engineer</h3><p>Expert supervision and efficient production planning to ensure smooth workflow and on-time project delivery.</p></div></article>
+            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-medal"></use></svg></div><div><h3>Quality Engineer</h3><p>Rigorous quality inspections at every stage to maintain high standards and ensure client satisfaction.</p></div></article>
+            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-clipboard"></use></svg></div><div><h3>Administrative Staff</h3><p>Well-coordinated administration for seamless communication, documentation and project management.</p></div></article>
+            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-hardhat"></use></svg></div><div><h3>Semi-Skilled &amp; Helper</h3><p>Trained workforce and helpers supporting skilled teams to maintain productivity and workplace efficiency.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Commitment</div>
+          <h2 class="title">Quality, Safety <span class="gold">&amp; Reliability</span></h2>
+        </div>
+        <div class="quality-grid">
+          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-clipboard"></use></svg></div><h3>Strict Quality Inspection Process</h3><p>Multi-stage inspection and testing to ensure defect-free fabrication and performance.</p></article>
+          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-ppe"></use></svg></div><h3>Skilled &amp; Certified Welders</h3><p>Certified welding professionals using advanced techniques for strong and safe welds.</p></article>
+          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"></use></svg></div><h3>PPE &amp; Safety Compliance</h3><p>We follow strict safety protocols and ensure 100% PPE compliance on-site.</p></article>
+          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><h3>Timely Project Execution</h3><p>Efficient planning and resource management to deliver every project on schedule.</p></article>
+          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><h3>Reliable Engineering Standards</h3><p>Adhering to national and international standards for quality and reliability.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Capabilities</div>
+          <h2 class="title">Infrastructure &amp; Equipment <span class="gold">Advantage</span></h2>
+        </div>
+        <div class="equipment-grid">
+          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-7.png" alt="Crane 10 Ton"></div><h3>Crane 10 Ton</h3><p>Material handling with 10 Ton EOT crane for efficient operations.</p></article>
+          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-8.png" alt="Welding machine"></div><h3>VIIG + ARC Welding Machine</h3><p>Advanced welding setup for MIG and ARC welding applications.</p></article>
+          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-9.png" alt="Radial drill machine"></div><h3>Radial Drill Machine</h3><p>Precision drilling with high-performance radial drill machine.</p></article>
+          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-10.png" alt="Magnetic drill machine"></div><h3>Magnetic Drill Machine</h3><p>Portable and precise drilling using magnetic drill machine.</p></article>
+          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-11.png" alt="Bandsaw machine"></div><h3>Bandsaw Machine</h3><p>Accurate cutting with high-quality bandsaw machine.</p></article>
+          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-12.png" alt="Grinding and gas cutting"></div><h3>Grinding / Gas Cutting Setup</h3><p>Complete grinding and gas cutting setup for finishing and shaping.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:14px">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Partners</div>
+          <h2 class="title">Trusted By Valuable Customers</h2>
+        </div>
+        <div class="clients-row">
+          <div class="logo-grid">
+            <article class="client-card"><div><div class="client-mark">VT</div><p>Vidyut Transformer<br>Pvt. Ltd.</p></div></article>
+            <article class="client-card"><div><div class="client-mark">V</div><p>Vikrant Special<br>Machines Pvt Ltd</p></div></article>
+            <article class="client-card"><div><div class="client-mark">VARENYA</div><p>Varenya Sustainable<br>Industries Pvt Ltd.</p></div></article>
+            <article class="client-card"><div><div class="client-mark">L&amp;T</div><p>L&amp;T Approved<br>Vendor</p></div></article>
+          </div>
+          <div class="support-box">
+            <h3>Industries &amp; Clients We Support</h3>
+            <div class="industry-icons">
+              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-factory"></use></svg></div><p>Chemical<br>Plants</p></div>
+              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-lab"></use></svg></div><p>Pharmaceuticals</p></div>
+              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><p>Oil &amp; Gas</p></div>
+              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-power"></use></svg></div><p>Power<br>Generation</p></div>
+              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-building"></use></svg></div><p>Industrial<br>Manufacturing</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Process</div>
+          <h2 class="title">What You Can Expect</h2>
+        </div>
+        <div class="process-grid">
+          <article class="step"><div class="num">01</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-chat"></use></svg></div><h3>Consultation</h3><p>We understand your requirements and provide expert consultation to align with your goals.</p></article>
+          <article class="step"><div class="num">02</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-plan"></use></svg></div><h3>Design &amp; Planning</h3><p>Detailed engineering, planning and documentation for accurate project execution.</p></article>
+          <article class="step"><div class="num">03</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-fabrication"></use></svg></div><h3>Fabrication &amp; Quality Check</h3><p>Precision fabrication with strict quality checks at every stage of production.</p></article>
+          <article class="step"><div class="num">04</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-delivery"></use></svg></div><h3>Delivery &amp; Installation</h3><p>Safe delivery and professional installation with on-site support and commissioning.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div>
+          <div class="eyebrow">Let's Build Together</div>
+          <h2>Need a Fabrication Partner You Can Trust?</h2>
+          <p>From concept to completion, we deliver high-quality fabrication solutions with precision, safety, and commitment.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="index.html#contact">Get a Quote <svg viewBox="0 0 24 24"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn-outline" href="index.html#contact">Contact Us <svg viewBox="0 0 24 24"><use href="#i-arrow"></use></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== SITE FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: Logo & Overview -->
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/logo.png" alt="ATMIYA ENGINEERING Logo">
+          </a>
+          <p>Precision engineering and industrial fabrication solutions built with innovation, quality and commitment to last.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="index.html"><span class="chevron">&gt;</span> Home</a></li>
+            <li><a href="about.html"><span class="chevron">&gt;</span> About Us</a></li>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Products</a></li>
+            <li><a href="our-work.html"><span class="chevron">&gt;</span> Our Work</a></li>
+            <li><a href="why-choose.html"><span class="chevron">&gt;</span> Why Choose Us</a></li>
+            <li><a href="contact.html"><span class="chevron">&gt;</span> Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Our Services -->
+        <div class="footer-col">
+          <h4>OUR SERVICES</h4>
+          <ul>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Process Equipment</a></li>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Heat Exchangers</a></li>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Pressure Vessels</a></li>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Storage Tanks</a></li>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Piping Spools</a></li>
+            <li><a href="services.html"><span class="chevron">&gt;</span> Custom Fabrication</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact Info -->
+        <div class="footer-col">
+          <h4>CONTACT INFO</h4>
+          <ul class="footer-contact">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+917069685356">+91 70696 85356</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:atmiyaengineering26@gmail.com">atmiyaengineering26@gmail.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-pin-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Horizon industrial park<br>plot.no.298, Bamangam Vadodara<br>Gujarat – 391243</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="copyright">
+        <p>&copy; 2024 <span class="footer-gold-brand">ATMIYA ENGINEERING</span>. All Rights Reserved. <span class="foot-sep">|</span> <a href="#">Privacy Policy</a> <span class="foot-sep">|</span> <a href="#">Terms &amp; Conditions</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
