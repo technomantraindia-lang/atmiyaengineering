@@ -46,6 +46,70 @@ ul { list-style: none; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+/* ---- CUSTOM GLOWING GOLD CURSOR ---- */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: default;
+  }
+  a, button, input, select, textarea, .btn, [role="button"],
+  .service-card, .promise-card, .strength-card, .value-card, .equip-card, .industry-card, .stat-item, .card, .quality-card {
+    cursor: pointer;
+  }
+
+  .custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: #c9a227;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, background 0.2s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 0 10px rgba(201, 162, 39, 0.85);
+  }
+
+  .custom-cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 162, 39, 0.35) 0%, rgba(201, 162, 39, 0.1) 60%, transparent 100%);
+    border: 1.5px solid rgba(201, 162, 39, 0.55);
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.35);
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), height 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    will-change: transform;
+  }
+
+  body.cursor-hover .custom-cursor-dot {
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    box-shadow: 0 0 14px #c9a227;
+  }
+
+  body.cursor-hover .custom-cursor-glow {
+    width: 58px;
+    height: 58px;
+    background: radial-gradient(circle, rgba(201, 162, 39, 0.45) 0%, rgba(201, 162, 39, 0.18) 70%, transparent 100%);
+    border-color: rgba(201, 162, 39, 0.9);
+    box-shadow: 0 0 32px rgba(201, 162, 39, 0.6), inset 0 0 14px rgba(201, 162, 39, 0.3);
+  }
+
+  body.cursor-click .custom-cursor-glow {
+    transform: translate(-50%, -50%) scale(0.75);
+    border-color: #ffffff;
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.8);
+  }
+}
+
 /* ---- ANIMATIONS ---- */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40px); }
@@ -426,7 +490,7 @@ ul { list-style: none; }
 
 /* ---- INDUSTRIES SECTION ---- */
 .industries-section { padding: 70px 0; background: var(--bg-gray); }
-.industries-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 40px; }
+.industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
 .industry-card {
   background: var(--white); border-radius: var(--radius);
   padding: 28px 16px; text-align: center;
@@ -497,6 +561,31 @@ ul { list-style: none; }
 }
 .gallery-item:hover .gallery-overlay { opacity: 1; }
 .gallery-overlay svg { width: 40px; height: 40px; color: #fff; }
+.gallery-item .tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(7, 24, 50, 0.9);
+  color: #ffffff;
+  border: 1px solid rgba(201, 162, 39, 0.85);
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+.gallery-item:hover .tag {
+  background: rgba(201, 162, 39, 0.95);
+  color: #071832;
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.4);
+}
 .gallery-view-all { text-align: center; margin-top: 36px; }
 
 /* ---- WHY CHOOSE SECTION ---- */

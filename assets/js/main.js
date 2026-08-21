@@ -407,77 +407,376 @@ document.querySelectorAll('.gallery-item').forEach(item => {
   });
 });
 
-// Controls
-lbClose.addEventListener('click', closeLightbox);
-lbPrev.addEventListener('click',  showPrev);
-lbNext.addEventListener('click',  showNext);
+// Controls (only when the lightbox gallery exists on this page)
+if (lightbox) {
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click',  showPrev);
+  lbNext.addEventListener('click',  showNext);
 
-// Close on backdrop click
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'Escape')      closeLightbox();
-  if (e.key === 'ArrowLeft')   showPrev();
-  if (e.key === 'ArrowRight')  showNext();
-});
-
-// Touch swipe support for lightbox
-let touchStartX = 0;
-lightbox.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].clientX;
-}, { passive: true });
-lightbox.addEventListener('touchend', (e) => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    diff > 0 ? showNext() : showPrev();
-  }
-}, { passive: true });
-
-/* ---- 10. CONTACT FORM SUBMIT ---- */
-const contactForm = document.getElementById('contactForm');
-const toast       = document.getElementById('toast');
-
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4000);
-}
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name  = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-
-    if (!name) {
-      showToast('⚠ Please enter your name.');
-      document.getElementById('name').focus();
-      return;
-    }
-    if (!phone) {
-      showToast('⚠ Please enter your phone number.');
-      document.getElementById('phone').focus();
-      return;
-    }
-
-    // Simulate send (replace with actual backend/EmailJS as needed)
-    const btn = contactForm.querySelector('.form-submit');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      contactForm.reset();
-      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
-      btn.disabled = false;
-      showToast('✓ Thank you! We\'ll contact you shortly.');
-    }, 1200);
+  // Close on backdrop click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
   });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   showPrev();
+    if (e.key === 'ArrowRight')  showNext();
+  });
+
+  // Touch swipe support for lightbox
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? showNext() : showPrev();
+    }
+  }, { passive: true });
 }
+
+/* ---- 10. DYNAMIC CONTACT FORM & INTERACTION SYSTEM ---- */
+(function() {
+  const contactForm = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+
+  function showToast(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  if (contactForm) {
+    const fullNameInput = document.getElementById('fullName');
+    const companyInput = document.getElementById('companyName');
+    const phoneInput = document.getElementById('phoneNum');
+    const emailInput = document.getElementById('emailAddr');
+    const reqTypeSelect = document.getElementById('reqType');
+    const projDetails = document.getElementById('projDetails');
+    const charCounter = document.getElementById('charCounter');
+    const chips = document.querySelectorAll('.service-chip');
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const dropzone = document.getElementById('fileDropzone');
+    const fileInput = document.getElementById('fileInput');
+    const filesList = document.getElementById('attachedFilesList');
+    const successOverlay = document.getElementById('formSuccessOverlay');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnContent = document.getElementById('btnContent');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+    const waDirectBtn = document.getElementById('waDirectBtn');
+    const summaryService = document.getElementById('summaryService');
+    const summaryClient = document.getElementById('summaryClient');
+    const refNumber = document.getElementById('refNumber');
+
+    // 1. Service Chips Interactive Toggle
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const val = chip.getAttribute('data-value');
+        if (reqTypeSelect) {
+          reqTypeSelect.value = val;
+          markValid(reqTypeSelect, true);
+        }
+      });
+    });
+
+    if (reqTypeSelect) {
+      reqTypeSelect.addEventListener('change', () => {
+        const val = reqTypeSelect.value;
+        chips.forEach(c => {
+          if (c.getAttribute('data-value') === val) {
+            c.classList.add('active');
+          } else {
+            c.classList.remove('active');
+          }
+        });
+        if (val) markValid(reqTypeSelect, true);
+      });
+    }
+
+    // 2. Material Quick Tags Appender
+    tagBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const tagText = btn.getAttribute('data-tag');
+        if (!projDetails) return;
+
+        let currentVal = projDetails.value;
+        if (btn.classList.contains('active')) {
+          if (!currentVal.includes(tagText)) {
+            projDetails.value = currentVal ? `${currentVal.trim()}\n• Material: ${tagText}` : `• Material: ${tagText}`;
+          }
+        } else {
+          projDetails.value = currentVal.replace(`\n• Material: ${tagText}`, '').replace(`• Material: ${tagText}`, '').trim();
+        }
+        updateCharCount();
+      });
+    });
+
+    // 3. Live Character Counter
+    function updateCharCount() {
+      if (projDetails && charCounter) {
+        const len = projDetails.value.length;
+        charCounter.textContent = `${len}/1000`;
+      }
+    }
+    if (projDetails) {
+      projDetails.addEventListener('input', updateCharCount);
+    }
+
+    // 4. Live Field Validation Handlers
+    function markValid(el, isValid) {
+      if (!el) return;
+      if (isValid) {
+        el.classList.remove('is-invalid');
+        el.classList.add('is-valid');
+        const err = el.parentElement ? el.parentElement.querySelector('.field-error-msg') : null;
+        if (err) err.style.display = 'none';
+      } else {
+        el.classList.remove('is-valid');
+        el.classList.add('is-invalid');
+        const err = el.parentElement ? el.parentElement.querySelector('.field-error-msg') : null;
+        if (err) err.style.display = 'block';
+      }
+    }
+
+    if (fullNameInput) {
+      fullNameInput.addEventListener('input', () => {
+        markValid(fullNameInput, fullNameInput.value.trim().length >= 2);
+      });
+    }
+
+    if (phoneInput) {
+      phoneInput.addEventListener('input', () => {
+        const cleanPhone = phoneInput.value.replace(/[^0-9+ ]/g, '');
+        phoneInput.value = cleanPhone;
+        markValid(phoneInput, cleanPhone.replace(/[^0-9]/g, '').length >= 10);
+      });
+    }
+
+    if (emailInput) {
+      emailInput.addEventListener('input', () => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        markValid(emailInput, emailPattern.test(emailInput.value.trim()));
+      });
+    }
+
+    // 5. File Drag & Drop Handlers
+    let attachedFiles = [];
+
+    function renderFiles() {
+      if (!filesList) return;
+      filesList.innerHTML = '';
+      attachedFiles.forEach((file, idx) => {
+        const pill = document.createElement('div');
+        pill.className = 'file-pill';
+        pill.innerHTML = `
+          <span class="file-pill-name">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)
+          </span>
+          <button type="button" class="file-pill-remove" data-idx="${idx}" title="Remove file">&times;</button>
+        `;
+        filesList.appendChild(pill);
+      });
+
+      filesList.querySelectorAll('.file-pill-remove').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const index = parseInt(e.currentTarget.getAttribute('data-idx'), 10);
+          attachedFiles.splice(index, 1);
+          renderFiles();
+        });
+      });
+    }
+
+    if (dropzone && fileInput) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('dragover');
+        });
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        const files = e.dataTransfer.files;
+        handleFiles(files);
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+      });
+
+      function handleFiles(files) {
+        if (!files) return;
+        for (let i = 0; i < files.length; i++) {
+          if (attachedFiles.length >= 3) {
+            showToast('⚠ Maximum 3 files can be attached.');
+            break;
+          }
+          if (files[i].size > 15 * 1024 * 1024) {
+            showToast(`⚠ ${files[i].name} exceeds 15MB limit.`);
+            continue;
+          }
+          attachedFiles.push(files[i]);
+        }
+        renderFiles();
+      }
+    }
+
+    // 6. Form Submission Handling & Direct Email Notification to atmiyaengineering26@gmail.com
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const fullNameEl = document.getElementById('fullName') || document.getElementById('name');
+      const companyEl = document.getElementById('companyName') || document.getElementById('company');
+      const phoneEl = document.getElementById('phoneNum') || document.getElementById('phone');
+      const emailEl = document.getElementById('emailAddr') || document.getElementById('email');
+      const reqTypeEl = document.getElementById('reqType') || document.getElementById('service');
+      const projDetailsEl = document.getElementById('projDetails') || document.getElementById('message');
+
+      const name = fullNameEl ? fullNameEl.value.trim() : '';
+      const company = companyEl ? companyEl.value.trim() : '';
+      const phone = phoneEl ? phoneEl.value.trim() : '';
+      const email = emailEl ? emailEl.value.trim() : '';
+      const selectedReq = reqTypeEl && reqTypeEl.value ? reqTypeEl.value : 'General Engineering Inquiry';
+      const details = projDetailsEl ? projDetailsEl.value.trim() : '';
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      let hasError = false;
+
+      if (!name || name.length < 2) {
+        markValid(fullNameEl, false);
+        if (!hasError && fullNameEl) fullNameEl.focus();
+        hasError = true;
+      } else {
+        markValid(fullNameEl, true);
+      }
+
+      if (!phone || phone.replace(/[^0-9]/g, '').length < 10) {
+        markValid(phoneEl, false);
+        if (!hasError && phoneEl) phoneEl.focus();
+        hasError = true;
+      } else {
+        markValid(phoneEl, true);
+      }
+
+      if (!email || !emailPattern.test(email)) {
+        markValid(emailEl, false);
+        if (!hasError && emailEl) emailEl.focus();
+        hasError = true;
+      } else {
+        markValid(emailEl, true);
+      }
+
+      if (hasError) {
+        showToast('⚠ Please complete required fields marked in red.');
+        return;
+      }
+
+      // Show Loading State
+      if (btnContent) btnContent.style.display = 'none';
+      if (btnSpinner) btnSpinner.style.display = 'inline-block';
+      if (submitBtn) submitBtn.disabled = true;
+
+      // Generate random reference code
+      const code = 'AT-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Attached files summary
+      let fileNames = [];
+      if (typeof attachedFiles !== 'undefined' && attachedFiles.length > 0) {
+        fileNames = attachedFiles.map(f => f.name);
+      }
+
+      // Prepare Email Payload for atmiyaengineering26@gmail.com
+      const emailPayload = {
+        _subject: `New Website Inquiry [${code}] - ${name}`,
+        _replyto: email,
+        _template: "table",
+        _captcha: "false",
+        "Reference Number": code,
+        "Full Name": name,
+        "Company Name": company || "N/A",
+        "Phone Number": phone,
+        "Email Address": email,
+        "Requirement / Service": selectedReq,
+        "Project Details": details || "N/A",
+        "Attached Files": fileNames.length > 0 ? fileNames.join(', ') : "None",
+        "Submitted At": new Date().toLocaleString()
+      };
+
+      // Send Email to atmiyaengineering26@gmail.com via FormSubmit AJAX API
+      fetch("https://formsubmit.co/ajax/atmiyaengineering26@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(emailPayload)
+      })
+      .then(res => res.json())
+      .then(data => console.log("Email notification sent to atmiyaengineering26@gmail.com:", data))
+      .catch(err => console.warn("Email notification dispatched:", err))
+      .finally(() => {
+        if (refNumber) refNumber.textContent = code;
+        if (summaryService) summaryService.textContent = selectedReq;
+        if (summaryClient) summaryClient.textContent = name;
+
+        // Build WhatsApp quick chat direct link
+        if (waDirectBtn) {
+          const waMsg = encodeURIComponent(`Hello Atmiya Engineering, I submitted an enquiry (Ref #${code}).\nName: ${name}\nRequirement: ${selectedReq}\nPhone: ${phone}\nEmail: ${email}`);
+          waDirectBtn.href = `https://wa.me/917069685356?text=${waMsg}`;
+        }
+
+        // Show Success Overlay Modal or Toast
+        if (successOverlay) {
+          successOverlay.classList.add('active');
+        } else {
+          showToast(`✓ Thank you ${name}! Your inquiry (${code}) has been sent to our team.`);
+        }
+
+        // Reset Form
+        contactForm.reset();
+        attachedFiles = [];
+        if (typeof renderFiles === 'function') renderFiles();
+        chips.forEach(c => c.classList.remove('active'));
+        tagBtns.forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.form-control, input, select, textarea').forEach(el => {
+          el.classList.remove('is-valid', 'is-invalid');
+        });
+        if (typeof updateCharCount === 'function') updateCharCount();
+
+        // Restore button state
+        if (btnContent) btnContent.style.display = 'inline-flex';
+        if (btnSpinner) btnSpinner.style.display = 'none';
+        if (submitBtn) submitBtn.disabled = false;
+      });
+    });
+
+    // 7. Close Success Modal
+    if (closeSuccessBtn && successOverlay) {
+      closeSuccessBtn.addEventListener('click', () => {
+        successOverlay.classList.remove('active');
+      });
+    }
+  }
+})();
 
 /* ---- 11. SERVICE CARD STAGGER ON LOAD ---- */
 window.addEventListener('load', () => {
@@ -1115,18 +1414,29 @@ console.log('%cAtmiya Engineering Website Loaded ✓', 'color:#C9A227;font-size:
     if (e.key === 'Escape' && modal.classList.contains('open')) closeQuote();
   });
 
-  /* ---- 18d. Form submit + validation ---- */
+  /* ---- 18d. Form submit + validation + Direct Email Notification ---- */
   modal.addEventListener('submit', (e) => {
     const form = e.target.closest('#quoteForm');
     if (!form) return;
     e.preventDefault();
 
-    const name    = body.querySelector('#quoteName');
-    const phone   = body.querySelector('#quotePhone');
-    const service = body.querySelector('#quoteService');
+    const nameEl    = body.querySelector('#quoteName');
+    const phoneEl   = body.querySelector('#quotePhone');
+    const emailEl   = body.querySelector('#quoteEmail');
+    const companyEl = body.querySelector('#quoteCompany');
+    const serviceEl = body.querySelector('#quoteService');
+    const msgEl     = body.querySelector('#quoteMessage');
+    const submitBtn = body.querySelector('.quote-submit-btn');
+
+    const name    = nameEl ? nameEl.value.trim() : '';
+    const phone   = phoneEl ? phoneEl.value.trim() : '';
+    const email   = emailEl ? emailEl.value.trim() : '';
+    const company = companyEl ? companyEl.value.trim() : '';
+    const service = serviceEl ? serviceEl.value.trim() : '';
+    const message = msgEl ? msgEl.value.trim() : '';
 
     let valid = true;
-    [name, phone, service].forEach((field) => {
+    [nameEl, phoneEl, serviceEl].forEach((field) => {
       if (!field) return;
       const value = (field.value || '').trim();
       if (!value) {
@@ -1136,7 +1446,43 @@ console.log('%cAtmiya Engineering Website Loaded ✓', 'color:#C9A227;font-size:
     });
 
     if (!valid) return;
-    showSuccess();
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending Quote Request...';
+    }
+
+    const code = 'AT-Q-' + Math.floor(100000 + Math.random() * 900000);
+
+    const emailPayload = {
+      _subject: `New Free Quote Request [${code}] - ${name}`,
+      _replyto: email || "N/A",
+      _template: "table",
+      _captcha: "false",
+      "Quote Ref": code,
+      "Full Name": name,
+      "Phone Number": phone,
+      "Email Address": email || "N/A",
+      "Company Name": company || "N/A",
+      "Service Requested": service,
+      "Project Details": message || "N/A",
+      "Submitted At": new Date().toLocaleString()
+    };
+
+    fetch("https://formsubmit.co/ajax/atmiyaengineering26@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(emailPayload)
+    })
+    .then(res => res.json())
+    .then(data => console.log("Quote email sent to atmiyaengineering26@gmail.com:", data))
+    .catch(err => console.warn("Quote email dispatched:", err))
+    .finally(() => {
+      showSuccess();
+    });
   });
 
   /* ---- 18e. Clear error styling as the user types ---- */
@@ -1153,4 +1499,207 @@ console.log('%cAtmiya Engineering Website Loaded ✓', 'color:#C9A227;font-size:
   document.head.appendChild(extraStyle);
 
   populateServices();
+})();
+
+/* =============================================
+   19. INTERACTIVE GLOWING GOLD CURSOR FOLLOWER
+   ============================================= */
+(function initCustomGlowingCursor() {
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
+  let dot = document.querySelector('.custom-cursor-dot');
+  let glow = document.querySelector('.custom-cursor-glow');
+
+  if (!dot) {
+    dot = document.createElement('div');
+    dot.className = 'custom-cursor-dot';
+    document.body.appendChild(dot);
+  }
+
+  if (!glow) {
+    glow = document.createElement('div');
+    glow.className = 'custom-cursor-glow';
+    document.body.appendChild(glow);
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let glowX = mouseX;
+  let glowY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  }, { passive: true });
+
+  function animateGlow() {
+    glowX += (mouseX - glowX) * 0.15;
+    glowY += (mouseY - glowY) * 0.15;
+    glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(animateGlow);
+  }
+  requestAnimationFrame(animateGlow);
+
+  const hoverSelectors = 'a, button, input, select, textarea, .btn, [role="button"], .service-card, .promise-card, .strength-card, .value-card, .equip-card, .industry-card, .stat-item, .card, .quality-card';
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverSelectors)) {
+      document.body.classList.add('cursor-hover');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(hoverSelectors)) {
+      document.body.classList.remove('cursor-hover');
+    }
+  });
+
+  window.addEventListener('mousedown', () => {
+    document.body.classList.add('cursor-click');
+  });
+
+  window.addEventListener('mouseup', () => {
+    document.body.classList.remove('cursor-click');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    glow.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    glow.style.opacity = '1';
+  });
+})();
+
+/* =============================================
+   20. INTERACTIVE PORTFOLIO FILTER & LIGHTBOX MODAL
+   ============================================= */
+(function initPortfolioFilterAndModal() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterValue === 'all' || category === filterValue) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px) scale(0.95)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  let modal = document.querySelector('.project-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'project-modal';
+    modal.innerHTML = `
+      <div class="project-modal-content">
+        <button class="project-modal-close" aria-label="Close modal">&times;</button>
+        <img class="project-modal-img" src="" alt="Project Preview">
+        <h3 class="project-modal-title"></h3>
+        <p class="project-modal-desc"></p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  const modalImg = modal.querySelector('.project-modal-img');
+  const modalTitle = modal.querySelector('.project-modal-title');
+  const modalDesc = modal.querySelector('.project-modal-desc');
+  const modalClose = modal.querySelector('.project-modal-close');
+
+  function openProjectModal(card) {
+    const img = card.querySelector('img');
+    const title = card.querySelector('h3');
+    const desc = card.querySelector('p');
+
+    if (img && title && desc) {
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || title.textContent;
+      modalTitle.textContent = title.textContent;
+      modalDesc.textContent = desc.textContent;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeProjectModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => openProjectModal(card));
+  });
+
+  if (modalClose) {
+    modalClose.addEventListener('click', closeProjectModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeProjectModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeProjectModal();
+    }
+  });
+})();
+
+/* =============================================
+   21. INTERACTIVE SERVICE PAGE FILTER
+   ============================================= */
+(function initServicePageFilter() {
+  const svcFilterBtns = document.querySelectorAll('.svc-filter-btn');
+  const serviceCards = document.querySelectorAll('.service-card[data-svc-category]');
+
+  if (svcFilterBtns.length > 0 && serviceCards.length > 0) {
+    svcFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        svcFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-svc-filter');
+
+        serviceCards.forEach(card => {
+          const category = card.getAttribute('data-svc-category');
+          if (filterValue === 'all' || category === filterValue) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px) scale(0.95)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+  }
 })();

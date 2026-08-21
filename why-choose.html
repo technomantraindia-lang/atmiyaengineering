@@ -27,12 +27,56 @@
     .btn-primary { background:var(--gold); color:var(--navy); box-shadow:0 12px 28px rgba(214,169,29,.31); }
     .btn-outline { color:#fff; border:2px solid rgba(255,255,255,.78); background:rgba(255,255,255,.07); }
 
-    .stats-bar { position:relative; z-index:5; margin:-62px auto 0; width:min(1000px, calc(100% - 48px)); background:linear-gradient(90deg,#071832,#102445,#071832); border:1px solid rgba(255,255,255,.18); color:#fff; border-radius:8px; box-shadow:0 20px 48px rgba(8,26,53,.28); display:grid; grid-template-columns:repeat(4,1fr); padding:26px 30px; }
-    .stat-item { display:flex; align-items:center; gap:19px; padding:0 25px; border-right:1px solid rgba(255,255,255,.22); }
-    .stat-item:last-child { border-right:0; }
-    .stat-icon { width:62px; height:62px; color:var(--gold); flex:0 0 auto; padding:7px; border-radius:12px; background:rgba(214,169,29,.08); }
-    .stat-item strong { display:block; color:#fff; font-size:24px; line-height:1; font-weight:900; }
-    .stat-item span { color:rgba(255,255,255,.75); font-size:12px; font-weight:800; line-height:1.25; }
+    .stats-bar {
+      position: relative;
+      z-index: 5;
+      margin: -54px auto 0;
+      width: min(1080px, calc(100% - 48px));
+      background: linear-gradient(90deg, #071832 0%, #0d2244 50%, #071832 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 20px 48px rgba(8, 26, 53, 0.35);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 24px 28px;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .stat-item:last-child { border-right: 0; }
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      flex: 0 0 auto;
+      color: #c9a227;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stat-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .stat-item strong {
+      display: block;
+      color: #ffffff;
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+    .stat-item span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+      display: block;
+      margin-top: 3px;
+    }
 
     .section { padding:66px 0; }
     .section-head { text-align:center; margin-bottom:30px; }
@@ -40,12 +84,93 @@
     .title { color:var(--ink); font-size:clamp(30px,4vw,40px); line-height:1.12; font-weight:900; }
     .sub { max-width:720px; margin:10px auto 0; color:var(--muted); font-size:13px; font-weight:650; }
 
-    .promise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1030px; margin:0 auto; }
-    .promise-card { background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 12px 30px rgba(8,26,53,.09); padding:28px 28px; display:grid; grid-template-columns:74px 1fr; gap:22px; align-items:center; min-height:142px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
-    .promise-card:hover { transform:translateY(-4px); box-shadow:0 18px 38px rgba(8,26,53,.13); border-color:rgba(214,169,29,.45); }
-    .promise-icon { width:70px; height:70px; color:var(--gold); background:#fff9e7; border:1px solid rgba(214,169,29,.38); border-radius:50%; padding:13px; box-shadow:0 8px 18px rgba(214,169,29,.13); }
-    .promise-card h3 { color:var(--navy); font-size:15px; font-weight:900; margin-bottom:6px; }
-    .promise-card p { color:var(--muted); font-size:12px; font-weight:650; line-height:1.55; }
+    .promise-section {
+      background: radial-gradient(circle at 50% 30%, rgba(201, 162, 39, 0.05) 0%, transparent 60%), #ffffff;
+      padding: 70px 0;
+      position: relative;
+    }
+    .promise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      max-width: 1140px;
+      margin: 44px auto 0;
+    }
+    .promise-card {
+      background: #ffffff;
+      border: 1px solid rgba(220, 225, 235, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(8, 26, 53, 0.05);
+      padding: 30px 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      min-height: 160px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+      text-align: left;
+    }
+    .promise-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3.5px;
+      background: linear-gradient(90deg, #c9a227 0%, #e2c055 100%);
+      transition: width 0.45s ease;
+      border-radius: 3px 3px 0 0;
+    }
+    .promise-card:hover::before {
+      width: 100%;
+    }
+    .promise-card:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(180deg, #ffffff 0%, #fffdf7 100%);
+      box-shadow: 0 20px 40px rgba(8, 26, 53, 0.12), 0 0 24px rgba(201, 162, 39, 0.18);
+      border-color: rgba(201, 162, 39, 0.7);
+    }
+    .promise-icon {
+      width: 58px;
+      height: 54px;
+      color: #c9a227;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .promise-icon svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 4px rgba(201, 162, 39, 0.2));
+    }
+    .promise-card:hover .promise-icon {
+      transform: scale(1.15) rotate(4deg);
+    }
+    .promise-card h3 {
+      color: #071832;
+      font-size: 16.5px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+    .promise-card:hover h3 {
+      color: #071832;
+    }
+    .promise-card p {
+      color: #5f6d82;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.55;
+    }
 
     .foundation { background:linear-gradient(180deg,#fff,#f7f9fc); padding:44px 0 68px; }
     .foundation-grid { display:grid; grid-template-columns:.95fr 1fr; gap:44px; align-items:center; }
@@ -53,20 +178,126 @@
     .photo-stack .main { grid-column:1 / -1; height:310px; }
     .photo-stack .small { height:170px; }
     .photo-stack img { width:100%; height:100%; object-fit:cover; object-position:center; border-radius:10px; box-shadow:0 14px 30px rgba(8,26,53,.16); border:1px solid rgba(255,255,255,.82); }
-    .strength-head { margin-bottom:22px; }
-    .strength-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-    .strength-card { background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 9px 24px rgba(8,26,53,.08); padding:24px; display:grid; grid-template-columns:68px 1fr; gap:20px; align-items:start; min-height:148px; }
-    .strength-icon { width:64px; height:64px; color:var(--gold); background:var(--navy); border-radius:8px; padding:14px; box-shadow:0 10px 20px rgba(8,26,53,.18); }
-    .strength-card h3 { color:var(--navy); font-size:14px; font-weight:900; margin-bottom:7px; }
-    .strength-card p { color:var(--muted); font-size:12px; font-weight:650; line-height:1.55; }
+    .strength-head { margin-bottom: 22px; }
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .strength-card {
+      background: #ffffff;
+      border: 1px solid rgba(220, 225, 235, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(8, 26, 53, 0.05);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      min-height: 140px;
+      text-align: left;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .strength-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(8, 26, 53, 0.12);
+      border-color: rgba(201, 162, 39, 0.85);
+    }
+    .strength-icon {
+      width: 64px;
+      height: 64px;
+      background: #071832;
+      border-radius: 10px;
+      padding: 0;
+      box-shadow: 0 8px 20px rgba(7, 24, 50, 0.25);
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .strength-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+    .strength-card:hover .strength-icon {
+      transform: scale(1.06);
+    }
+    .strength-card h3 {
+      color: #071832;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .strength-card p {
+      color: #5f6d82;
+      font-size: 12.5px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
 
     .dark { background:linear-gradient(135deg,#071832,#102445 58%,#071832); color:#fff; }
     .dark .title { color:#fff; }
-    .quality-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
-    .quality-card { border:1px solid rgba(255,255,255,.25); border-radius:9px; padding:32px 18px; min-height:235px; text-align:center; background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); box-shadow:inset 0 1px 0 rgba(255,255,255,.08); }
-    .quality-icon { width:78px; height:78px; color:var(--gold); margin:0 auto 18px; padding:12px; border-radius:50%; background:rgba(214,169,29,.09); border:1px solid rgba(214,169,29,.28); }
-    .quality-card h3 { color:#fff; font-size:15px; line-height:1.22; margin-bottom:10px; font-weight:900; }
-    .quality-card p { color:rgba(255,255,255,.73); font-size:12px; font-weight:650; line-height:1.5; }
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1140px;
+      margin: 40px auto 0;
+    }
+    .quality-card {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 32px 20px 28px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .quality-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 162, 39, 0.9);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 16px rgba(201, 162, 39, 0.25);
+    }
+    .quality-icon {
+      width: 64px;
+      height: 60px;
+      color: #c9a227;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .quality-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .quality-card:hover .quality-icon {
+      transform: scale(1.08);
+    }
+    .quality-card h3 {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .quality-card p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12.5px;
+      font-weight: 500;
+      line-height: 1.55;
+    }
 
     .equipment-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:18px; }
     .equip-card { background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 10px 26px rgba(8,26,53,.08); overflow:hidden; text-align:center; transition:transform .2s ease, box-shadow .2s ease; }
@@ -81,22 +312,132 @@
     .logo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
     .client-card { border:1px solid var(--line); border-radius:7px; min-height:118px; display:grid; place-items:center; text-align:center; padding:16px; box-shadow:0 7px 18px rgba(8,26,53,.05); background:#fff; }
     .client-mark { color:#17315b; font-weight:950; font-size:22px; letter-spacing:-1px; margin-bottom:8px; }
+    .client-logo { height: 85px; width: 100%; display: grid; place-items: center; margin: 0 auto; }
+    .client-logo img { max-height: 75px; width: auto; max-width: 100%; object-fit: contain; transform: scale(1.35); transition: transform 0.3s ease; filter: drop-shadow(0 4px 10px rgba(8,26,53,.12)); }
+    .client-card:hover .client-logo img { transform: scale(1.45); }
     .client-card p { color:var(--navy); font-size:12px; font-weight:900; line-height:1.25; }
-    .support-box { border:1px solid var(--line); border-radius:8px; background:#fff; box-shadow:0 8px 22px rgba(8,26,53,.06); padding:26px 22px; text-align:center; }
-    .support-box h3 { color:var(--navy); font-size:18px; margin-bottom:22px; }
-    .industry-icons { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
-    .industry-icon { width:58px; height:58px; color:var(--navy); margin:0 auto 10px; padding:10px; border-radius:50%; background:#fff8e1; border:1px solid rgba(214,169,29,.32); }
-    .industry-icons p { color:var(--navy); font-size:11px; line-height:1.2; font-weight:900; }
+    .support-box {
+      border: 1px solid rgba(220, 225, 235, 0.85);
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(8, 26, 53, 0.04);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .support-box h3 {
+      color: #071832;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+    .industry-icons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .industry-icon {
+      width: 64px;
+      height: 60px;
+      color: #071832;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .industry-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .support-box div:hover .industry-icon {
+      transform: translateY(-4px) scale(1.08);
+    }
+    .industry-icons p {
+      color: #071832;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
 
-    .process { padding-top:26px; }
-    .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:48px; max-width:1060px; margin:0 auto; position:relative; }
-    .step { text-align:center; position:relative; padding-top:30px; }
-    .step::after { content:""; position:absolute; top:32px; left:65%; width:75%; border-top:2px dotted #8791a0; }
-    .step:last-child::after { display:none; }
-    .num { position:absolute; top:0; left:20px; width:42px; height:42px; border-radius:50%; background:var(--navy); color:var(--gold2); display:grid; place-items:center; font-weight:950; border:4px solid #fff; box-shadow:0 8px 18px rgba(8,26,53,.14); }
-    .step-icon { width:84px; height:84px; color:var(--gold); margin:0 auto 15px; padding:12px; border-radius:50%; background:#fff9e7; border:1px solid rgba(214,169,29,.34); }
-    .step h3 { color:var(--navy); font-size:15px; font-weight:900; margin-bottom:8px; }
-    .step p { color:var(--muted); font-size:12px; font-weight:650; line-height:1.48; }
+    .process { padding-top: 36px; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      max-width: 1140px;
+      margin: 44px auto 0;
+      position: relative;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .step::after {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: 62%;
+      width: 76%;
+      border-top: 2px dashed #a0aec0;
+      z-index: 1;
+    }
+    .step:last-child::after { display: none; }
+    .num {
+      position: absolute;
+      top: 0;
+      left: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #071832;
+      color: #c9a227;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 13px;
+      z-index: 3;
+      box-shadow: 0 4px 12px rgba(7, 24, 50, 0.25);
+    }
+    .step-icon {
+      width: 72px;
+      height: 68px;
+      color: #c9a227;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .step-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .step:hover .step-icon {
+      transform: translateY(-4px) scale(1.08);
+    }
+    .step h3 {
+      color: #071832;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .step p {
+      color: #5f6d82;
+      font-size: 12.5px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
 
     .cta { margin-top:18px; color:#fff; background:linear-gradient(90deg,rgba(7,24,50,.98),rgba(7,24,50,.9),rgba(7,24,50,.45)), url("assets/images/new-2.png") center right / cover no-repeat; padding:52px 0; }
     .cta h2 { font-size:clamp(30px,4vw,42px); line-height:1.08; margin-bottom:14px; max-width:520px; }
@@ -238,10 +579,68 @@
   </section>
 
   <section class="stats-bar" aria-label="Why choose highlights">
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-workshop"></use></svg></div><div><strong>5000+</strong><span>SQ. FT. Workshop</span></div></div>
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-team"></use></svg></div><div><strong>Skilled</strong><span>Technical Team</span></div></div>
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"></use></svg></div><div><strong>Quality</strong><span>Assured</span></div></div>
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><div><strong>On-Time</strong><span>Delivery</span></div></div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 52H58" stroke-width="3"/>
+          <path d="M12 28L32 14L52 28" stroke-width="3"/>
+          <path d="M8 28H56V52H8V28Z" stroke-width="2.5"/>
+          <rect x="24" y="34" width="16" height="18" stroke-width="2.5"/>
+          <path d="M32 34V52"/>
+          <rect x="14" y="34" width="6" height="8"/>
+          <rect x="44" y="34" width="6" height="8"/>
+        </svg>
+      </div>
+      <div>
+        <strong>5000+</strong>
+        <span>SQ. FT. Workshop</span>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 28C22 22 26 18 32 18C38 18 42 22 42 28V32H22V28Z"/>
+          <path d="M16 32H48C49 32 50 33 50 34H14C14 33 15 32 16 32Z" fill="#c9a227"/>
+          <path d="M25 34V37C25 41 28 44 32 44C36 44 39 41 39 37V34"/>
+          <path d="M18 52V49C18 45 22 44 27 44H37C42 44 46 45 46 49V52"/>
+          <circle cx="16" cy="18" r="4.5" stroke-width="2"/>
+          <circle cx="48" cy="18" r="4.5" stroke-width="2"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Skilled</strong>
+        <span>Technical Team</span>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 12C20 12 18 16 18 28C18 40 28 48 32 52C36 48 46 40 46 28C46 16 44 12 32 12Z" stroke-width="3"/>
+          <path d="M25 31L30 36L39 25" stroke-width="3.5"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Quality</strong>
+        <span>Assured</span>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 10H36M32 10V16"/>
+          <path d="M44 18L48 14"/>
+          <circle cx="32" cy="34" r="18" stroke-width="2.5"/>
+          <path d="M32 20V22M32 46V48M18 34H20M44 34H46"/>
+          <path d="M32 26V36" stroke-width="3"/>
+          <path d="M29 33L32 37L35 33" stroke-width="2.5" fill="#c9a227"/>
+          <circle cx="32" cy="34" r="3" fill="#c9a227"/>
+        </svg>
+      </div>
+      <div>
+        <strong>On-Time</strong>
+        <span>Delivery</span>
+      </div>
+    </div>
   </section>
 
   <main>
@@ -253,12 +652,96 @@
           <p class="sub">Our commitment to excellence makes us the preferred fabrication partner for leading industries.</p>
         </div>
         <div class="promise-grid">
-          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-team"></use></svg></div><div><h3>Experienced Team</h3><p>Highly skilled engineers and technicians with years of hands-on experience in industrial fabrication and project execution.</p></div></article>
-          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-price"></use></svg></div><div><h3>Competitive Pricing</h3><p>Transparent pricing with cost-effective solutions that deliver maximum value without compromising on quality.</p></div></article>
-          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><div><h3>On-Time Delivery</h3><p>We prioritize deadlines and ensure timely project completion through efficient planning and execution.</p></div></article>
-          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-design"></use></svg></div><div><h3>Custom Design Solutions</h3><p>Tailored fabrication and engineering solutions as per your specific requirements and industry standards.</p></div></article>
-          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-support"></use></svg></div><div><h3>Strong Customer Support</h3><p>Dedicated support team that stays with you from inquiry to after-sales service and beyond.</p></div></article>
-          <article class="promise-card"><div class="icon promise-icon"><svg viewBox="0 0 24 24"><use href="#i-medal"></use></svg></div><div><h3>Precision Engineering &amp; Quality Focus</h3><p>Advanced processes, strict quality control and attention to detail in every stage of fabrication.</p></div></article>
+          <article class="promise-card">
+            <div class="promise-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="22" r="8" stroke-width="2.5"/>
+                <path d="M20 48C20 40 25 36 32 36C39 36 44 40 44 48"/>
+                <circle cx="18" cy="26" r="6"/>
+                <path d="M10 50C10 44 14 41 18 41"/>
+                <circle cx="46" cy="26" r="6"/>
+                <path d="M54 50C54 44 50 41 46 41"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Experienced Team</h3>
+              <p>Highly skilled engineers and technicians with years of hands-on experience in industrial fabrication and project execution.</p>
+            </div>
+          </article>
+          <article class="promise-card">
+            <div class="promise-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="18" stroke-width="2.5"/>
+                <circle cx="32" cy="32" r="14" stroke-dasharray="4 2"/>
+                <path d="M25 24H37M25 28H35M25 24V32C28 32 33 32 33 28C33 24 25 24 25 24ZM25 32L34 42" stroke-width="2.8"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Competitive Pricing</h3>
+              <p>Transparent pricing with cost-effective solutions that deliver maximum value without compromising on quality.</p>
+            </div>
+          </article>
+          <article class="promise-card">
+            <div class="promise-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 10H36M32 10V16"/>
+                <path d="M44 18L48 14"/>
+                <circle cx="32" cy="34" r="18" stroke-width="2.5"/>
+                <path d="M32 20V22M32 46V48M18 34H20M44 34H46"/>
+                <path d="M32 26V36" stroke-width="3"/>
+                <path d="M29 33L32 37L35 33" stroke-width="2.5" fill="#c9a227"/>
+                <circle cx="32" cy="34" r="3" fill="#c9a227"/>
+              </svg>
+            </div>
+            <div>
+              <h3>On-Time Delivery</h3>
+              <p>We prioritize deadlines and ensure timely project completion through efficient planning and execution.</p>
+            </div>
+          </article>
+          <article class="promise-card">
+            <div class="promise-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="16" y="16" width="36" height="32" rx="3" stroke-width="2.5"/>
+                <path d="M10 20C10 17.8 11.8 16 14 16H16V48H14C11.8 48 10 46.2 10 44V20Z" stroke-width="2"/>
+                <path d="M54 20C54 17.8 52.2 16 50 16H48V48H50C52.2 48 54 46.2 54 44V20Z" stroke-width="2"/>
+                <path d="M22 24H42M22 30H34M22 36H38M22 42H30"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Custom Design Solutions</h3>
+              <p>Tailored fabrication and engineering solutions as per your specific requirements and industry standards.</p>
+            </div>
+          </article>
+          <article class="promise-card">
+            <div class="promise-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 32C18 22 24 16 32 16C40 16 46 22 46 32" stroke-width="3"/>
+                <rect x="14" y="30" width="6" height="12" rx="3" fill="#c9a227"/>
+                <rect x="44" y="30" width="6" height="12" rx="3" fill="#c9a227"/>
+                <path d="M47 38V44C47 47 43 49 38 49H34" stroke-width="2.5"/>
+                <circle cx="32" cy="49" r="3" fill="#c9a227"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Strong Customer Support</h3>
+              <p>Dedicated support team that stays with you from inquiry to after-sales service and beyond.</p>
+            </div>
+          </article>
+          <article class="promise-card">
+            <div class="promise-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="22" r="14" stroke-width="2.5"/>
+                <circle cx="32" cy="22" r="9" stroke-width="1.8"/>
+                <path d="M32 17L33.5 20L37 20.5L34.5 23L35 26.5L32 25L29 26.5L29.5 23L27 20.5L30.5 20Z" fill="#c9a227"/>
+                <path d="M25 34L21 52L27 49L31 52L30 34" stroke-width="2.5"/>
+                <path d="M39 34L34 52L39 49L43 52L39 34" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Precision Engineering &amp; Quality Focus</h3>
+              <p>Advanced processes, strict quality control and attention to detail in every stage of fabrication.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -278,10 +761,67 @@
             <p class="sub" style="margin-left:0">Our 5000+ sq. ft. workshop is backed by skilled manpower and robust processes to ensure precision, quality, and timely delivery.</p>
           </div>
           <div class="strength-grid">
-            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-engineer"></use></svg></div><div><h3>Production Engineer</h3><p>Expert supervision and efficient production planning to ensure smooth workflow and on-time project delivery.</p></div></article>
-            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-medal"></use></svg></div><div><h3>Quality Engineer</h3><p>Rigorous quality inspections at every stage to maintain high standards and ensure client satisfaction.</p></div></article>
-            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-clipboard"></use></svg></div><div><h3>Administrative Staff</h3><p>Well-coordinated administration for seamless communication, documentation and project management.</p></div></article>
-            <article class="strength-card"><div class="icon strength-icon"><svg viewBox="0 0 24 24"><use href="#i-hardhat"></use></svg></div><div><h3>Semi-Skilled &amp; Helper</h3><p>Trained workforce and helpers supporting skilled teams to maintain productivity and workplace efficiency.</p></div></article>
+            <article class="strength-card">
+              <div class="strength-icon">
+                <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 28C22 22 26 18 32 18C38 18 42 22 42 28V32H22V28Z"/>
+                  <path d="M16 32H48C49 32 50 33 50 34H14C14 33 15 32 16 32Z" fill="#c9a227"/>
+                  <path d="M25 34V37C25 41 28 44 32 44C36 44 39 41 39 37V34"/>
+                  <path d="M16 52V49C16 45 20 44 26 44H38C44 44 48 45 48 49V52"/>
+                  <path d="M26 44L29 52M38 44L35 52"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Production Engineer</h3>
+                <p>Expert supervision and efficient production planning to ensure smooth workflow and on-time project delivery.</p>
+              </div>
+            </article>
+            <article class="strength-card">
+              <div class="strength-icon">
+                <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="14" stroke-width="2.5"/>
+                  <circle cx="32" cy="22" r="9" stroke-width="1.8"/>
+                  <path d="M32 17L33.5 20L37 20.5L34.5 23L35 26.5L32 25L29 26.5L29.5 23L27 20.5L30.5 20Z" fill="#c9a227"/>
+                  <path d="M25 34L21 52L27 49L31 52L30 34" stroke-width="2.5"/>
+                  <path d="M39 34L34 52L39 49L43 52L39 34" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Quality Engineer</h3>
+                <p>Rigorous quality inspections at every stage to maintain high standards and ensure client satisfaction.</p>
+              </div>
+            </article>
+            <article class="strength-card">
+              <div class="strength-icon">
+                <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="8" stroke-width="2.5"/>
+                  <path d="M24 20C24 16 28 14 32 14C36 14 40 16 40 20" stroke-width="2"/>
+                  <path d="M24 24V28H22" stroke-width="2"/>
+                  <path d="M16 50V46C16 41 21 38 27 38H37C43 38 48 41 48 46V50"/>
+                  <path d="M28 38L32 46L36 38"/>
+                  <polygon points="32,46 34,50 30,50" fill="#c9a227"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Administrative Staff</h3>
+                <p>Well-coordinated administration for seamless communication, documentation and project management.</p>
+              </div>
+            </article>
+            <article class="strength-card">
+              <div class="strength-icon">
+                <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 26C22 21 26 18 32 18C38 18 42 21 42 26V30H22V26Z"/>
+                  <path d="M18 30H46C48 30 49 31 49 32H15C15 31 16 30 18 30Z" fill="#c9a227"/>
+                  <path d="M25 32V36C25 40 28 43 32 43C36 43 39 40 39 36V32"/>
+                  <path d="M16 52V48C16 44 20 43 26 43H38C44 43 48 44 48 48V52"/>
+                  <rect x="27" y="43" width="10" height="9" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Semi-Skilled &amp; Helper</h3>
+                <p>Trained workforce and helpers supporting skilled teams to maintain productivity and workplace efficiency.</p>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -294,11 +834,72 @@
           <h2 class="title">Quality, Safety <span class="gold">&amp; Reliability</span></h2>
         </div>
         <div class="quality-grid">
-          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-clipboard"></use></svg></div><h3>Strict Quality Inspection Process</h3><p>Multi-stage inspection and testing to ensure defect-free fabrication and performance.</p></article>
-          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-ppe"></use></svg></div><h3>Skilled &amp; Certified Welders</h3><p>Certified welding professionals using advanced techniques for strong and safe welds.</p></article>
-          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"></use></svg></div><h3>PPE &amp; Safety Compliance</h3><p>We follow strict safety protocols and ensure 100% PPE compliance on-site.</p></article>
-          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><h3>Timely Project Execution</h3><p>Efficient planning and resource management to deliver every project on schedule.</p></article>
-          <article class="quality-card"><div class="icon quality-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><h3>Reliable Engineering Standards</h3><p>Adhering to national and international standards for quality and reliability.</p></article>
+          <article class="quality-card">
+            <div class="quality-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="18" y="14" width="28" height="38" rx="3" stroke-width="2.5"/>
+                <rect x="25" y="10" width="14" height="6" rx="2" fill="#c9a227"/>
+                <path d="M24 24H38M24 30H34M24 36H30"/>
+                <path d="M42 34C36 34 35 36 35 42C35 48 40 52 42 54C44 52 49 48 49 42C49 36 48 34 42 34Z" fill="#071832" stroke-width="2.5"/>
+                <path d="M39 42L41 44L45 39" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3>Strict Quality Inspection Process</h3>
+            <p>Multi-stage inspection and testing to ensure defect-free fabrication and performance.</p>
+          </article>
+          <article class="quality-card">
+            <div class="quality-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 28C22 21 26 16 32 16C38 16 42 21 42 28V32H22V28Z"/>
+                <rect x="24" y="22" width="16" height="8" rx="2" fill="#c9a227"/>
+                <path d="M16 32H48V34H16V32Z"/>
+                <path d="M16 52V48C16 44 20 42 26 42H38C44 42 48 44 48 48V52"/>
+                <path d="M42 44L47 38M47 38L52 44M47 38V49" stroke-width="2"/>
+                <circle cx="47" cy="38" r="2" fill="#c9a227"/>
+              </svg>
+            </div>
+            <h3>Skilled &amp; Certified Welders</h3>
+            <p>Certified welding professionals using advanced techniques for strong and safe welds.</p>
+          </article>
+          <article class="quality-card">
+            <div class="quality-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 10C20 10 18 14 18 26C18 38 28 46 32 50C36 46 46 38 46 26C46 14 44 10 32 10Z" stroke-width="3"/>
+                <path d="M26 24C26 20 28 18 32 18C36 18 38 20 38 24V27H26V24Z"/>
+                <path d="M23 27H41"/>
+                <path d="M27 34L30 38L37 29" stroke-width="3"/>
+              </svg>
+            </div>
+            <h3>PPE &amp; Safety Compliance</h3>
+            <p>We follow strict safety protocols and ensure 100% PPE compliance on-site.</p>
+          </article>
+          <article class="quality-card">
+            <div class="quality-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 10H36M32 10V16"/>
+                <path d="M44 18L48 14"/>
+                <circle cx="32" cy="34" r="18" stroke-width="2.5"/>
+                <path d="M32 20V22M32 46V48M18 34H20M44 34H46"/>
+                <path d="M32 26V36" stroke-width="3"/>
+                <path d="M29 33L32 37L35 33" stroke-width="2.5" fill="#c9a227"/>
+                <circle cx="32" cy="34" r="3" fill="#c9a227"/>
+              </svg>
+            </div>
+            <h3>Timely Project Execution</h3>
+            <p>Efficient planning and resource management to deliver every project on schedule.</p>
+          </article>
+          <article class="quality-card">
+            <div class="quality-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="30" r="14" stroke-width="2.5"/>
+                <path d="M30 10V16M30 44V50M10 30H16M44 30H50M16 16L20 20M40 40L44 44M16 44L20 40M40 20L44 16" stroke-width="3"/>
+                <circle cx="30" cy="30" r="7" stroke-width="2"/>
+                <path d="M35 35L48 48" stroke-width="3.5"/>
+              </svg>
+            </div>
+            <h3>Reliable Engineering Standards</h3>
+            <p>Adhering to national and international standards for quality and reliability.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -306,41 +907,81 @@
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <div class="eyebrow">Our Capabilities</div>
-          <h2 class="title">Infrastructure &amp; Equipment <span class="gold">Advantage</span></h2>
-        </div>
-        <div class="equipment-grid">
-          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-7.png" alt="Crane 10 Ton"></div><h3>Crane 10 Ton</h3><p>Material handling with 10 Ton EOT crane for efficient operations.</p></article>
-          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-8.png" alt="Welding machine"></div><h3>VIIG + ARC Welding Machine</h3><p>Advanced welding setup for MIG and ARC welding applications.</p></article>
-          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-9.png" alt="Radial drill machine"></div><h3>Radial Drill Machine</h3><p>Precision drilling with high-performance radial drill machine.</p></article>
-          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-10.png" alt="Magnetic drill machine"></div><h3>Magnetic Drill Machine</h3><p>Portable and precise drilling using magnetic drill machine.</p></article>
-          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-11.png" alt="Bandsaw machine"></div><h3>Bandsaw Machine</h3><p>Accurate cutting with high-quality bandsaw machine.</p></article>
-          <article class="equip-card"><div class="equip-img"><img src="assets/images/new-12.png" alt="Grinding and gas cutting"></div><h3>Grinding / Gas Cutting Setup</h3><p>Complete grinding and gas cutting setup for finishing and shaping.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:14px">
-      <div class="container">
-        <div class="section-head">
           <div class="eyebrow">Our Partners</div>
           <h2 class="title">Trusted By Valuable Customers</h2>
         </div>
         <div class="clients-row">
           <div class="logo-grid">
-            <article class="client-card"><div><div class="client-mark">VT</div><p>Vidyut Transformer<br>Pvt. Ltd.</p></div></article>
+            <article class="client-card"><div><div class="client-logo"><img src="assets/images/2.png" alt="Vidyut Transformer Pvt. Ltd."></div></div></article>
             <article class="client-card"><div><div class="client-mark">V</div><p>Vikrant Special<br>Machines Pvt Ltd</p></div></article>
             <article class="client-card"><div><div class="client-mark">VARENYA</div><p>Varenya Sustainable<br>Industries Pvt Ltd.</p></div></article>
-            <article class="client-card"><div><div class="client-mark">L&amp;T</div><p>L&amp;T Approved<br>Vendor</p></div></article>
+            <article class="client-card"><div><div class="client-logo"><img src="assets/images/1.png" alt="L&amp;T Approved Vendor"></div></div></article>
           </div>
           <div class="support-box">
             <h3>Industries &amp; Clients We Support</h3>
             <div class="industry-icons">
-              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-factory"></use></svg></div><p>Chemical<br>Plants</p></div>
-              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-lab"></use></svg></div><p>Pharmaceuticals</p></div>
-              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><p>Oil &amp; Gas</p></div>
-              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-power"></use></svg></div><p>Power<br>Generation</p></div>
-              <div><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-building"></use></svg></div><p>Industrial<br>Manufacturing</p></div>
+              <div>
+                <div class="industry-icon">
+                  <svg viewBox="0 0 64 64" fill="none" stroke="#071832" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="36" y="14" width="14" height="38" rx="7" stroke-width="2.5"/>
+                    <path d="M36 24H50M36 34H50M36 44H50"/>
+                    <path d="M43 14V8M41 8H45" stroke-width="2"/>
+                    <rect x="22" y="24" width="10" height="28" rx="5" stroke-width="2.5"/>
+                    <path d="M22 34H32"/>
+                    <rect x="10" y="34" width="8" height="18" rx="4" stroke-width="2.5"/>
+                    <path d="M6 52H58" stroke-width="3"/>
+                  </svg>
+                </div>
+                <p>Chemical<br>Plants</p>
+              </div>
+              <div>
+                <div class="industry-icon">
+                  <svg viewBox="0 0 64 64" fill="none" stroke="#071832" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26 18H38M32 18V28L44 44C47 48 44 54 38 54H26C20 54 17 48 20 44L32 28Z" stroke-width="2.8"/>
+                    <circle cx="32" cy="14" r="3" fill="#071832"/>
+                    <path d="M24 44C28 42 36 46 40 44" stroke-width="2"/>
+                    <path d="M16 54H48" stroke-width="3"/>
+                  </svg>
+                </div>
+                <p>Pharmaceuticals</p>
+              </div>
+              <div>
+                <div class="industry-icon">
+                  <svg viewBox="0 0 64 64" fill="none" stroke="#071832" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="24" r="12" stroke-width="2.8"/>
+                    <circle cx="32" cy="24" r="5" stroke-width="2"/>
+                    <path d="M32 12V36M20 24H44" stroke-width="2"/>
+                    <path d="M32 36V46" stroke-width="3"/>
+                    <path d="M12 46H52" stroke-width="3.5"/>
+                    <path d="M14 40V52M50 40V52" stroke-width="3"/>
+                  </svg>
+                </div>
+                <p>Oil &amp; Gas</p>
+              </div>
+              <div>
+                <div class="industry-icon">
+                  <svg viewBox="0 0 64 64" fill="none" stroke="#071832" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 52C22 38 24 28 26 22H38C40 28 42 38 44 52" stroke-width="3"/>
+                    <path d="M20 52H44" stroke-width="3"/>
+                    <path d="M24 36H40" stroke-width="2"/>
+                    <path d="M32 8C35 12 37 14 35 17C33 20 31 20 32 22" stroke-width="2.5"/>
+                    <path d="M27 12C29 15 30 17 29 19" stroke-width="2"/>
+                  </svg>
+                </div>
+                <p>Power<br>Generation</p>
+              </div>
+              <div>
+                <div class="industry-icon">
+                  <svg viewBox="0 0 64 64" fill="none" stroke="#071832" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 52V36L22 28V36L32 28V36L42 28V52H12Z" stroke-width="2.5"/>
+                    <path d="M42 52V18L52 14V52" stroke-width="3"/>
+                    <path d="M42 24H52" stroke-width="2"/>
+                    <circle cx="47" cy="8" r="3" fill="#071832"/>
+                    <path d="M8 52H56" stroke-width="3"/>
+                  </svg>
+                </div>
+                <p>Industrial<br>Manufacturing</p>
+              </div>
             </div>
           </div>
         </div>
@@ -354,10 +995,69 @@
           <h2 class="title">What You Can Expect</h2>
         </div>
         <div class="process-grid">
-          <article class="step"><div class="num">01</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-chat"></use></svg></div><h3>Consultation</h3><p>We understand your requirements and provide expert consultation to align with your goals.</p></article>
-          <article class="step"><div class="num">02</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-plan"></use></svg></div><h3>Design &amp; Planning</h3><p>Detailed engineering, planning and documentation for accurate project execution.</p></article>
-          <article class="step"><div class="num">03</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-fabrication"></use></svg></div><h3>Fabrication &amp; Quality Check</h3><p>Precision fabrication with strict quality checks at every stage of production.</p></article>
-          <article class="step"><div class="num">04</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-delivery"></use></svg></div><h3>Delivery &amp; Installation</h3><p>Safe delivery and professional installation with on-site support and commissioning.</p></article>
+          <article class="step">
+            <div class="num">01</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="18" y="12" width="28" height="20" rx="4" stroke-width="2.5"/>
+                <path d="M26 22H38M26 17H34"/>
+                <path d="M24 32L18 38V32"/>
+                <path d="M42 22H46C49 22 51 24 51 27V36C51 39 49 41 46 41H42V46L36 41H32" stroke-width="2"/>
+                <circle cx="20" cy="46" r="4.5"/>
+                <path d="M12 56C12 51 16 49 20 49C24 49 28 51 28 56"/>
+              </svg>
+            </div>
+            <h3>Consultation</h3>
+            <p>We understand your requirements and provide expert consultation to align with your goals.</p>
+          </article>
+          <article class="step">
+            <div class="num">02</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="16" y="16" width="36" height="32" rx="3" stroke-width="2.5"/>
+                <path d="M10 20C10 17.8 11.8 16 14 16H16V48H14C11.8 48 10 46.2 10 44V20Z" stroke-width="2"/>
+                <path d="M54 20C54 17.8 52.2 16 50 16H48V48H50C52.2 48 54 46.2 54 44V20Z" stroke-width="2"/>
+                <path d="M22 24H42M22 30H34M22 36H38M22 42H30"/>
+              </svg>
+            </div>
+            <h3>Design &amp; Planning</h3>
+            <p>Detailed engineering, planning and documentation for accurate project execution.</p>
+          </article>
+          <article class="step">
+            <div class="num">03</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="46" width="40" height="8" rx="2" stroke-width="3"/>
+                <path d="M20 46V36H28V46"/>
+                <circle cx="24" cy="41" r="2" fill="#c9a227"/>
+                <path d="M44 46V30L34 18L26 22" stroke-width="3"/>
+                <circle cx="44" cy="30" r="3" fill="#c9a227"/>
+                <circle cx="34" cy="18" r="3" fill="#c9a227"/>
+                <path d="M26 22L20 28"/>
+                <polygon points="18,12 22,16 14,20 18,24" fill="#c9a227" stroke="none"/>
+              </svg>
+            </div>
+            <h3>Fabrication &amp; Quality Check</h3>
+            <p>Precision fabrication with strict quality checks at every stage of production.</p>
+          </article>
+          <article class="step">
+            <div class="num">04</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="18" width="30" height="24" rx="2" stroke-width="2.8"/>
+                <path d="M12 26H28M12 32H22" stroke-width="2"/>
+                <path d="M38 26H46L54 34V42H38V26Z" stroke-width="2.8"/>
+                <path d="M44 28L50 34H44V28Z"/>
+                <circle cx="18" cy="44" r="5" stroke-width="2.8" fill="#ffffff"/>
+                <circle cx="18" cy="44" r="2" fill="#c9a227"/>
+                <circle cx="46" cy="44" r="5" stroke-width="2.8" fill="#ffffff"/>
+                <circle cx="46" cy="44" r="2" fill="#c9a227"/>
+                <path d="M8 42H13M23 42H41M51 42H56" stroke-width="2.8"/>
+              </svg>
+            </div>
+            <h3>Delivery &amp; Installation</h3>
+            <p>Safe delivery and professional installation with on-site support and commissioning.</p>
+          </article>
         </div>
       </div>
     </section>

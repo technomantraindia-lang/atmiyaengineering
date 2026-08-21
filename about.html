@@ -130,16 +130,21 @@
     .photo-stack::after { left: 24px; bottom: 15px; }
     .stack-img {
       position: absolute;
-      object-fit: contain;
-      border-radius: 7px;
-      box-shadow: var(--shadow);
-      border: 4px solid #fff;
-      background: linear-gradient(145deg, #f8fafc, #eef2f7);
-      padding: 14px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 16px 35px rgba(8,26,53,.18);
+      border: 3px solid #fff;
+      transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s ease;
     }
     .stack-img.one { width: 280px; height: 185px; left: 0; top: 0; }
     .stack-img.two { width: 305px; height: 260px; right: 0; top: 70px; }
     .stack-img.three { width: 250px; height: 210px; left: 35px; bottom: 0; }
+    
+    @keyframes badgePulse {
+      0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.4); }
+      70% { box-shadow: 0 0 0 18px rgba(201, 162, 39, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+    }
     .experience-badge {
       position: absolute;
       left: 205px;
@@ -154,9 +159,17 @@
       text-align: center;
       box-shadow: 0 16px 35px rgba(8,26,53,.16);
       z-index: 3;
+      animation: badgePulse 2.5s infinite ease-in-out;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .experience-badge strong { display: block; color: var(--gold); font-size: 30px; line-height: 1; }
     .experience-badge span { display: block; font-size: 10px; font-weight: 800; line-height: 1.25; color: var(--ink); }
+    
+    .photo-stack:hover .stack-img.one { transform: translate(-10px, -10px) scale(1.04); }
+    .photo-stack:hover .stack-img.two { transform: translate(12px, -8px) scale(1.04); }
+    .photo-stack:hover .stack-img.three { transform: translate(-8px, 12px) scale(1.04); }
+    .photo-stack:hover .experience-badge { transform: scale(1.12); }
+
     .story-copy p {
       color: #4d5c72;
       margin-top: 17px;
@@ -169,7 +182,7 @@
       gap: 14px;
       margin-top: 34px;
     }
-    .mini-stat, .value-card, .strength-card, .cert-card, .leader-card {
+    .mini-stat, .cert-card, .leader-card {
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 7px;
@@ -178,8 +191,16 @@
     .mini-stat {
       padding: 18px 14px;
       min-height: 118px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
-    .mini-stat .icon, .value-card .icon {
+    .mini-stat:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 162, 39, 0.8);
+      box-shadow: 0 14px 28px rgba(8, 26, 53, 0.12), 0 0 14px rgba(201, 162, 39, 0.15);
+    }
+    .mini-stat .icon {
       width: 42px;
       height: 42px;
       border-radius: 50%;
@@ -188,6 +209,12 @@
       color: var(--gold);
       background: rgba(201,162,39,.12);
       margin-bottom: 13px;
+      transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
+    }
+    .mini-stat:hover .icon {
+      transform: scale(1.12);
+      background: #c9a227;
+      color: #071832;
     }
     .mini-stat .icon svg { width: 24px; height: 24px; stroke-width: 2.2; }
     .mini-stat strong { display: block; color: var(--ink); font-size: 21px; line-height: 1; }
@@ -196,39 +223,103 @@
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 42px;
+      gap: 28px;
+      max-width: 1140px;
+      margin: 44px auto 0;
     }
     .value-card {
-      padding: 34px 30px;
-      min-height: 205px;
+      background: #ffffff;
+      border: 1px solid rgba(220, 225, 235, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(8, 26, 53, 0.06);
+      padding: 38px 30px;
+      min-height: 250px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .value-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3.5px;
+      background: linear-gradient(90deg, #c9a227 0%, #efc64d 100%);
+      transition: width 0.45s ease;
+    }
+    .value-card:hover::before {
+      width: 100%;
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(201, 162, 39, 0.85);
+      box-shadow: 0 20px 42px rgba(8, 26, 53, 0.14), 0 0 20px rgba(201, 162, 39, 0.2);
     }
     .value-card .icon {
-      width: 58px;
-      height: 58px;
+      width: 64px;
+      height: 60px;
       background: transparent;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      color: #c9a227;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .value-card .icon svg { stroke-width: 2.1; }
-    svg { width: 100%; height: 100%; }
-    .value-card h3, .strength-card h3 { font-size: 19px; margin-bottom: 10px; color: var(--ink); }
-    .value-card p, .value-card li, .strength-card p {
+    .value-card:hover .icon {
+      transform: scale(1.15) rotate(4deg);
+    }
+    .value-card .icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .value-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #071832;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .value-card p {
       color: #5f6d82;
-      font-size: 13px;
+      font-size: 13.5px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    .value-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+      padding: 0;
+      width: 100%;
+    }
+    .value-card li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #5f6d82;
+      font-size: 13.5px;
       font-weight: 600;
     }
-    .value-card ul { list-style: none; display: grid; gap: 7px; }
-    .value-card li { display: flex; align-items: center; gap: 8px; }
     .check-dot {
-      width: 14px;
-      height: 14px;
-      border: 1px solid var(--gold);
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid #c9a227;
       border-radius: 50%;
-      color: var(--gold);
-      display: inline-grid;
-      place-items: center;
-      font-size: 9px;
+      color: #c9a227;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 900;
       flex: 0 0 auto;
+      background: rgba(201, 162, 39, 0.08);
     }
 
     .dark-band {
@@ -242,71 +333,138 @@
     .strength-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 42px;
+      gap: 24px;
+      max-width: 1140px;
+      margin: 44px auto 0;
     }
     .strength-card {
-      padding: 29px 28px;
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.1);
-      box-shadow: none;
-      min-height: 174px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 32px 28px 28px;
+      text-align: left;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 220px;
+    }
+    .strength-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 162, 39, 0.9);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 16px rgba(201, 162, 39, 0.25);
     }
     .strength-card .icon {
-      color: var(--gold);
       width: 58px;
-      height: 58px;
-      margin-bottom: 17px;
+      height: 54px;
+      color: #c9a227;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      transition: transform 0.35s ease;
     }
-    .strength-card .icon svg { stroke-width: 2.1; }
-    .strength-card h3 { color: #fff; }
-    .strength-card p { color: rgba(255,255,255,.72); }
+    .strength-card .icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .strength-card:hover .icon {
+      transform: scale(1.08);
+    }
+    .strength-card h3 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .strength-card p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.55;
+    }
     .gold-line {
-      width: 50px;
+      width: 40px;
       height: 3px;
-      background: var(--gold);
-      margin-top: 20px;
+      background: #c9a227;
+      margin-top: 18px;
       border-radius: 2px;
     }
 
     .timeline {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 22px;
-      margin-top: 48px;
+      gap: 16px;
+      max-width: 1140px;
+      margin: 54px auto 0;
       position: relative;
     }
     .timeline::before {
       content: "";
       position: absolute;
-      left: 5%;
-      right: 5%;
-      top: 18px;
+      left: calc(100% / 12);
+      right: calc(100% / 12);
+      top: 11px;
       height: 2px;
-      background: #cbd3df;
+      background: #7a8b9e;
+      z-index: 0;
     }
     .mile {
       position: relative;
       text-align: center;
-      padding-top: 42px;
+      padding-top: 40px;
       z-index: 1;
     }
     .mile::before {
       content: "";
       position: absolute;
-      top: 8px;
+      top: 0px;
       left: 50%;
-      width: 20px;
-      height: 20px;
       transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: var(--gold);
-      border: 5px solid #fff;
-      box-shadow: 0 0 0 2px var(--gold);
+      background: #c9a227;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2px #c9a227, 0 4px 12px rgba(201, 162, 39, 0.4);
+      z-index: 2;
     }
-    .mile strong { color: var(--gold); font-size: 16px; }
-    .mile h4 { color: var(--ink); font-size: 12px; line-height: 1.25; margin: 7px 0; }
-    .mile p { color: var(--muted); font-size: 11px; font-weight: 600; line-height: 1.45; }
+    .mile::after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffffff;
+      z-index: 3;
+    }
+    .mile strong {
+      color: #c9a227;
+      font-size: 20px;
+      font-weight: 800;
+      display: block;
+      letter-spacing: 0.3px;
+    }
+    .mile h4 {
+      color: #071832;
+      font-size: 14.5px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 8px 0 6px;
+    }
+    .mile p {
+      color: #5f6d82;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.48;
+      max-width: 160px;
+      margin: 0 auto;
+    }
 
     .industry-grid {
       display: grid;
@@ -429,9 +587,24 @@
 
     .leader-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 32px;
-      margin-top: 42px;
+      max-width: 860px;
+      margin: 42px auto 0;
+    }
+    .leader-phone {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .leader-phone a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .leader-phone a:hover {
+      color: var(--gold);
     }
     .leader-card {
       display: grid;
@@ -744,7 +917,7 @@
           <img class="stack-img one" src="assets/images/new-1.png" alt="Industrial pressure vessel">
           <img class="stack-img two" src="assets/images/new-8.png" alt="Transparent pressure vessel equipment">
           <img class="stack-img three" src="assets/images/new-12.png" alt="Transparent fabrication assembly">
-          <div class="experience-badge"><div><strong>15+</strong><span>Years of<br>Excellence</span></div></div>
+          <div class="experience-badge"><div><strong>8+</strong><span>Years of<br>Excellence</span></div></div>
         </div>
         <div class="story-copy">
           <div class="eyebrow">Who We Are</div>
@@ -753,8 +926,8 @@
           <p>Founded with a vision to deliver precision engineered solutions, we have grown into a trusted name in industrial fabrication and heavy equipment manufacturing.</p>
           <p>From concept to commissioning, we combine innovation, skilled craftsmanship and stringent quality to deliver results that last.</p>
           <div class="mini-stats">
-            <div class="mini-stat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><strong>15+</strong><span>Years of Experience</span></div>
-            <div class="mini-stat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div><strong>500+</strong><span>Projects Completed</span></div>
+            <div class="mini-stat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><strong>8+</strong><span>Years of Experience</span></div>
+            <div class="mini-stat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div><strong>100+</strong><span>Projects Completed</span></div>
             <div class="mini-stat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.6"/><path d="M16 3.2a4 4 0 0 1 0 7.6"/></svg></div><strong>100+</strong><span>Skilled Professionals</span></div>
             <div class="mini-stat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-5h6v5"/><path d="M9 9h.01M12 9h.01M15 9h.01M9 12h.01M12 12h.01M15 12h.01"/></svg></div><strong>15+</strong><span>Industries Served</span></div>
           </div>
@@ -762,17 +935,37 @@
       </div>
       <div class="container values-grid">
         <article class="value-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><path d="M12 3v3M21 12h-3M12 21v-3M3 12h3"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="34" r="18" stroke-width="2.5"/>
+              <circle cx="30" cy="34" r="11" stroke-width="2.2"/>
+              <circle cx="30" cy="34" r="4" fill="#c9a227"/>
+              <path d="M48 16L32 32M48 16L40 16M48 16L48 24" stroke-width="3"/>
+              <path d="M48 16L54 10" stroke-width="2.5"/>
+            </svg>
+          </div>
           <h3>Our Mission</h3>
           <p>To deliver high-quality, precision engineered fabrication solutions that exceed customer expectations through innovation, safety and continuous improvement.</p>
         </article>
         <article class="value-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 32C10 32 20 18 32 18C44 18 54 32 54 32C54 32 44 46 32 46C20 46 10 32 10 32Z" stroke-width="3"/>
+              <circle cx="32" cy="32" r="9" stroke-width="2.5"/>
+              <circle cx="32" cy="32" r="3.5" fill="#c9a227"/>
+            </svg>
+          </div>
           <h3>Our Vision</h3>
-          <p>To be a globally respected engineering company known for reliability, advanced technology, and sustainable industrial solutions.</p>
+          <p>To be a globally respected engineering company known for reliability, advanced technology and sustainable industrial solutions.</p>
         </article>
         <article class="value-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M18 8l1.3 1.3L22 6.6"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="26" cy="24" r="8" stroke-width="2.5"/>
+              <path d="M12 48C12 40 18 36 26 36C34 36 40 40 40 48" stroke-width="3"/>
+              <path d="M44 18C41.5 15.5 38 16.5 37 19C36 16.5 32.5 15.5 30 18C27 21 27 26 37 32C47 26 47 21 44 18Z" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+            </svg>
+          </div>
           <h3>Our Values</h3>
           <ul>
             <li><span class="check-dot">&#10003;</span>Integrity in every action</li>
@@ -790,81 +983,141 @@
         <h2 class="section-title">Why Choose <span class="gold">Atmiya?</span></h2>
         <p class="subcopy">We bring together people, process and technology to deliver world-class fabrication solutions.</p>
         <div class="strength-grid">
-          <article class="strength-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6"/><path d="M5 10a7 7 0 0 1 14 0"/><path d="M4 10h16v4a8 8 0 0 1-16 0z"/></svg></div><h3>Engineering Expertise</h3><p>Experienced engineers and fabricators delivering precise and innovative solutions.</p><div class="gold-line"></div></article>
-          <article class="strength-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><path d="M8 13l-1 8 5-3 5 3-1-8"/></svg></div><h3>Quality Assurance</h3><p>Rigorous quality checks and adherence to global standards at every stage.</p><div class="gold-line"></div></article>
-          <article class="strength-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/><path d="M19 5l-3 3"/></svg></div><h3>Timely Delivery</h3><p>Strong project management ensures on-time completion, every time.</p><div class="gold-line"></div></article>
-          <article class="strength-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a8 8 0 0 0 0-6l2-1.5-2-3.4-2.4 1a8 8 0 0 0-5-3l-.4-2.6h-4l-.4 2.6a8 8 0 0 0-5 3l-2.4-1-2 3.4L4.6 9a8 8 0 0 0 0 6l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 5 3l.4 2.6h4l.4-2.6a8 8 0 0 0 5-3l2.4 1 2-3.4z"/></svg></div><h3>Custom Fabrication</h3><p>Tailor-made solutions built to meet unique process and operational requirements.</p><div class="gold-line"></div></article>
-          <article class="strength-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-5"/></svg></div><h3>Safety First</h3><p>We follow strict HSE practices to ensure a safe workplace and secure operations.</p><div class="gold-line"></div></article>
-          <article class="strength-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div><h3>Client Trust</h3><p>Long-term relationships built on transparency, reliability and results.</p><div class="gold-line"></div></article>
+          <article class="strength-card">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 32C18 21 24 16 32 16C40 16 46 21 46 32V36H18V32Z" stroke-width="2.5"/>
+                <path d="M32 16V36" stroke-width="2"/>
+                <path d="M26 18V36M38 18V36"/>
+                <path d="M12 36H52C53.5 36 54 37 54 38C54 39.5 52 41 50 41H14C12 41 10 39.5 10 38C10 37 10.5 36 12 36Z" fill="#c9a227"/>
+                <path d="M22 41V46C22 48 26 50 32 50C38 50 42 48 42 46V41" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Engineering Expertise</h3>
+            <p>Experienced engineers and fabricators delivering precise and innovative solutions.</p>
+            <div class="gold-line"></div>
+          </article>
+          <article class="strength-card">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="22" r="14" stroke-width="2.5"/>
+                <circle cx="32" cy="22" r="9" stroke-width="1.8"/>
+                <path d="M32 17L33.5 20L37 20.5L34.5 23L35 26.5L32 25L29 26.5L29.5 23L27 20.5L30.5 20Z" fill="#c9a227"/>
+                <path d="M25 34L21 52L27 49L31 52L30 34" stroke-width="2.5"/>
+                <path d="M39 34L34 52L39 49L43 52L39 34" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3>Quality Assurance</h3>
+            <p>Rigorous quality checks and adherence to global standards at every stage.</p>
+            <div class="gold-line"></div>
+          </article>
+          <article class="strength-card">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 10H36M32 10V16"/>
+                <path d="M44 18L48 14"/>
+                <circle cx="32" cy="34" r="18" stroke-width="2.5"/>
+                <path d="M32 20V22M32 46V48M18 34H20M44 34H46"/>
+                <path d="M32 26V36" stroke-width="3"/>
+                <path d="M29 33L32 37L35 33" stroke-width="2.5" fill="#c9a227"/>
+                <circle cx="32" cy="34" r="3" fill="#c9a227"/>
+              </svg>
+            </div>
+            <h3>Timely Delivery</h3>
+            <p>Strong project management ensures on-time completion, every time.</p>
+            <div class="gold-line"></div>
+          </article>
+          <article class="strength-card">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="14" stroke-width="2.5"/>
+                <path d="M32 10V18M32 46V54M10 32H18M46 32H54M16.4 16.4L22.1 22.1M41.9 41.9L47.6 47.6M16.4 47.6L22.1 41.9M41.9 22.1L47.6 16.4" stroke-width="3"/>
+                <circle cx="32" cy="32" r="8" stroke-dasharray="3 2"/>
+                <circle cx="32" cy="32" r="3" fill="#c9a227"/>
+              </svg>
+            </div>
+            <h3>Custom Fabrication</h3>
+            <p>Tailor-made solutions built to meet unique process and operational requirements.</p>
+            <div class="gold-line"></div>
+          </article>
+          <article class="strength-card">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 12C20 12 18 16 18 28C18 40 28 48 32 52C36 48 46 40 46 28C46 16 44 12 32 12Z" stroke-width="3"/>
+                <path d="M25 31L30 36L39 25" stroke-width="3.5"/>
+              </svg>
+            </div>
+            <h3>Safety First</h3>
+            <p>We follow strict HSE practices to ensure a safe workplace and secure operations.</p>
+            <div class="gold-line"></div>
+          </article>
+          <article class="strength-card">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 28L24 18L34 28L24 38L12 28Z" stroke-width="2.5"/>
+                <path d="M52 28L40 18L30 28L40 38L52 28Z" stroke-width="2.5"/>
+                <path d="M24 38L28 42L36 34M28 22L36 30" stroke-width="2.5"/>
+                <path d="M10 24L6 28L10 32M54 24L58 28L54 32" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3>Client Trust</h3>
+            <p>Long-term relationships built on transparency, reliability and results.</p>
+            <div class="gold-line"></div>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container center">
-        <div class="eyebrow">Our Journey</div>
-        <h2 class="section-title">Milestones That Define Our Growth</h2>
-        <div class="timeline">
-          <div class="mile"><strong>2009</strong><h4>Company Incorporated</h4><p>Started our journey with a small workshop.</p></div>
-          <div class="mile"><strong>2012</strong><h4>First Major Project</h4><p>Successfully delivered our first large-scale project.</p></div>
-          <div class="mile"><strong>2015</strong><h4>Facility Expansion</h4><p>Expanded infrastructure and added advanced machinery.</p></div>
-          <div class="mile"><strong>2018</strong><h4>500+ Projects Completed</h4><p>Reached a milestone of 500+ successful executions.</p></div>
-          <div class="mile"><strong>2021</strong><h4>Global Standards</h4><p>Achieved ISO certifications and global compliance.</p></div>
-          <div class="mile"><strong>2024</strong><h4>Future Forward</h4><p>Continuing to innovate and build long-term partnerships.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top: 0;">
-      <div class="container center">
         <div class="eyebrow">Industries We Serve</div>
         <h2 class="section-title">Industries We Empower</h2>
         <div class="industry-grid">
           <article class="industry-card" data-num="01">
-            <img src="assets/images/new-1.png" alt="Chemical processing equipment">
+            <img src="assets/images/new-1.png" alt="Transformer Tank fabrication">
             <div class="industry-content">
-              <h3>Chemical Processing</h3>
-              <p>Reactors, vessels &amp; complete process systems for chemical plants</p>
+              <h3>Transformer Tank</h3>
+              <p>Heavy-duty transformer tanks engineered for high strength, structural integrity &amp; leak-proof quality</p>
               <span class="industry-arrow">-&gt;</span>
             </div>
           </article>
           <article class="industry-card" data-num="02">
-            <img src="assets/images/new-2.png" alt="Pharmaceutical fabrication equipment">
+            <img src="assets/images/new-2.png" alt="Power Transformer Tank fabrication">
             <div class="industry-content">
-              <h3>Pharmaceutical</h3>
-              <p>GMP-compliant SS tanks, mixers &amp; pharma-grade fabrications</p>
+              <h3>Transformer Tank</h3>
+              <p>Precision-fabricated distribution &amp; power transformer tanks with radiators, conservators &amp; oil-tight construction</p>
               <span class="industry-arrow">-&gt;</span>
             </div>
           </article>
           <article class="industry-card" data-num="03">
-            <img src="assets/images/new-5.png" alt="Oil and gas pressure vessel">
+            <img src="assets/images/new-5.png" alt="Reboiler Vessel">
             <div class="industry-content">
-              <h3>Oil &amp; Gas</h3>
-              <p>High-pressure vessels, piping &amp; structural systems for O&amp;G plants</p>
+              <h3>Reboiler</h3>
+              <p>High-efficiency kettle &amp; thermosiphon reboiler vessels engineered for distillation and process plants</p>
               <span class="industry-arrow">-&gt;</span>
             </div>
           </article>
           <article class="industry-card" data-num="04">
-            <img src="assets/images/new-8.png" alt="Food and beverage stainless equipment">
+            <img src="assets/images/new-8.png" alt="Pipe Spool &amp; Structure">
             <div class="industry-content">
-              <h3>Food &amp; Beverage</h3>
-              <p>Hygienic SS fabrications &amp; food-grade process equipment</p>
+              <h3>Pipe Spool &amp; Structure</h3>
+              <p>Precision-fabricated piping spools, pipe support structures &amp; piping systems for industrial facilities</p>
               <span class="industry-arrow">-&gt;</span>
             </div>
           </article>
           <article class="industry-card" data-num="05">
-            <img src="assets/images/new-9.png" alt="Power and energy fabrication">
+            <img src="assets/images/new-9.png" alt="Storage Tanks">
             <div class="industry-content">
-              <h3>Power &amp; Energy</h3>
-              <p>Heat exchangers, skid systems &amp; structural steel for energy plants</p>
+              <h3>Storage Tanks</h3>
+              <p>Custom-fabricated industrial storage tanks, receiver vessels &amp; chemical holding tanks for plant operations</p>
               <span class="industry-arrow">-&gt;</span>
             </div>
           </article>
           <article class="industry-card" data-num="06">
-            <img src="assets/images/new-12.png" alt="General industry fabrication">
+            <img src="assets/images/new-12.png" alt="Pressure Vessel fabrication">
             <div class="industry-content">
-              <h3>General Industry</h3>
-              <p>Custom fabrication solutions for all heavy &amp; light manufacturing sectors</p>
+              <h3>Pressure Vessel</h3>
+              <p>ASME code-compliant high-pressure vessels, air receivers &amp; industrial pressure tanks</p>
               <span class="industry-arrow">-&gt;</span>
             </div>
           </article>
@@ -880,11 +1133,8 @@
           <p>We maintain rigorous quality systems and follow international standards to ensure reliability, safety and performance in every project.</p>
           <a href="index.html#contact" class="primary-btn">View Our Certifications <span>&gt;</span></a>
         </div>
-        <div class="cert-grid">
+        <div class="cert-grid" style="grid-template-columns: 1fr; max-width: 240px;">
           <article class="cert-card"><div class="seal"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="22"/><path d="M19 46c-6-6-8-16-4-24M45 46c6-6 8-16 4-24"/><path d="M23 21h18M23 43h18"/><text x="32" y="37" text-anchor="middle" fill="currentColor" stroke="none" font-size="13" font-weight="800">ISO</text></svg></div><h4>9001:2015</h4><p>Quality Management</p></article>
-          <article class="cert-card"><div class="seal"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="22"/><path d="M19 46c-6-6-8-16-4-24M45 46c6-6 8-16 4-24"/><path d="M23 21h18M23 43h18"/><text x="32" y="37" text-anchor="middle" fill="currentColor" stroke="none" font-size="13" font-weight="800">ISO</text></svg></div><h4>14001:2015</h4><p>Environmental Management</p></article>
-          <article class="cert-card"><div class="seal"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="22"/><path d="M19 46c-6-6-8-16-4-24M45 46c6-6 8-16 4-24"/><path d="M23 21h18M23 43h18"/><text x="32" y="37" text-anchor="middle" fill="currentColor" stroke="none" font-size="13" font-weight="800">ISO</text></svg></div><h4>45001:2018</h4><p>Occupational Health &amp; Safety</p></article>
-          <article class="cert-card"><div class="seal"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 8l18 7v14c0 13-8 22-18 27-10-5-18-14-18-27V15l18-7z"/><path d="M24 33l6 6 12-14"/><path d="M22 18h20"/></svg></div><h4>U, U2, R, S</h4><p>Certified Fabrication</p></article>
         </div>
       </div>
     </section>
@@ -900,9 +1150,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="36" height="36"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
             <div>
-              <h3>Rajesh Patel</h3>
+              <h3>HARSHAD RANGPARIYA</h3>
               <small>Managing Director</small>
-              <p>Visionary leader with 20+ years of experience in engineering and project execution.</p>
+              <p class="leader-phone"><a href="tel:+919427743974">+91 94277 43974</a></p>
               <a href="#" class="linkedin" aria-label="LinkedIn Profile">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9z"/></svg>
               </a>
@@ -913,22 +1163,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="36" height="36"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
             <div>
-              <h3>Vikram Mehta</h3>
+              <h3>PARTH ZALAVADIYA</h3>
               <small>Technical Director</small>
-              <p>Expert in process equipment design, fabrication and quality assurance.</p>
-              <a href="#" class="linkedin" aria-label="LinkedIn Profile">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9z"/></svg>
-              </a>
-            </div>
-          </article>
-          <article class="leader-card">
-            <div class="leader-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="36" height="36"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            <div>
-              <h3>Anita Sharma</h3>
-              <small>Operations Director</small>
-              <p>Operations specialist focused on delivery excellence and client satisfaction.</p>
+              <p class="leader-phone"><a href="tel:+917069685356">+91 70696 85356</a></p>
               <a href="#" class="linkedin" aria-label="LinkedIn Profile">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9z"/></svg>
               </a>

@@ -25,14 +25,57 @@
     .btn-primary { background:var(--gold); color:var(--navy); box-shadow:0 12px 28px rgba(201,162,39,.28); }
     .btn-outline { color:#fff; border:2px solid rgba(255,255,255,.82); background:rgba(255,255,255,.08); box-shadow:0 10px 24px rgba(0,0,0,.18); }
 
-    .stats-bar { position:relative; z-index:3; margin:-44px auto 0; width:min(1040px, calc(100% - 48px)); background:linear-gradient(90deg, #071832, #102445, #071832); border:1px solid rgba(255,255,255,.16); color:#fff; border-radius:8px; box-shadow:0 18px 40px rgba(8,26,53,.22); display:grid; grid-template-columns:repeat(4, 1fr); padding:22px 30px; }
-    .stat-item { display:flex; align-items:center; gap:18px; padding:0 28px; border-right:1px solid rgba(255,255,255,.22); }
-    .stat-item:last-child { border-right:0; }
-    .icon { color:var(--gold); display:grid; place-items:center; flex:0 0 auto; }
-    .icon svg { width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
-    .stat-icon { width:48px; height:48px; }
-    .stat-item strong { display:block; font-size:23px; line-height:1; }
-    .stat-item span { color:rgba(255,255,255,.72); font-size:12px; font-weight:700; line-height:1.25; }
+    .stats-bar {
+      position: relative;
+      z-index: 3;
+      margin: -48px auto 0;
+      width: min(1080px, calc(100% - 48px));
+      background: linear-gradient(90deg, #071832 0%, #0d2244 50%, #071832 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(8, 26, 53, 0.35);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 24px 28px;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .stat-item:last-child { border-right: 0; }
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      flex: 0 0 auto;
+      color: #c9a227;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stat-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .stat-item strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+    }
+    .stat-item span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+      display: block;
+      margin-top: 3px;
+    }
 
     .section { padding:74px 0; }
     .section-head { text-align:center; margin-bottom:38px; }
@@ -40,52 +83,547 @@
     .title { font-size:clamp(29px, 4vw, 40px); line-height:1.12; color:var(--ink); }
     .sub { max-width:680px; margin:10px auto 0; color:var(--muted); font-size:13px; font-weight:600; }
 
-    .project-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:26px; max-width:1120px; margin:0 auto; }
-    .project-card { background:#fff; border:1px solid var(--line); border-radius:8px; box-shadow:0 10px 28px rgba(8,26,53,.1); overflow:hidden; text-align:center; }
-    .project-img { height:190px; display:grid; place-items:center; background:linear-gradient(145deg,#eef2f7,#fff); padding:8px 14px; border-bottom:1px solid #edf1f6; }
-    .project-img img { width:100%; max-height:178px; object-fit:contain; filter:drop-shadow(0 14px 18px rgba(8,26,53,.2)); }
-    .project-card h3 { color:var(--navy); font-size:18px; font-weight:900; margin:16px 16px 6px; }
-    .project-card p { color:var(--muted); font-size:13px; font-weight:600; line-height:1.5; padding:0 18px 20px; }
+    /* ---- DYNAMIC PROJECT FILTER BAR ---- */
+    .project-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 38px;
+    }
+    .filter-btn {
+      background: #f0f4f9;
+      color: #071832;
+      border: 1.5px solid #d0d7e2;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #071832;
+      color: #c9a227;
+      border-color: #071832;
+      box-shadow: 0 8px 20px rgba(7, 24, 50, 0.25);
+      transform: translateY(-2px);
+    }
 
-    .capabilities { background:linear-gradient(180deg,#fff,#f7f9fc); padding:58px 0 68px; }
-    .cap-grid, .industry-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
-    .cap-card, .industry-card { background:#fff; border:1px solid rgba(201,162,39,.62); border-radius:7px; text-align:center; padding:28px 16px; box-shadow:0 8px 22px rgba(8,26,53,.06); }
-    .cap-icon { width:64px; height:64px; margin:0 auto 15px; }
-    .cap-card h3, .industry-card h3 { font-size:15px; color:var(--navy); line-height:1.25; margin-bottom:8px; }
-    .cap-card p { color:var(--muted); font-size:12px; font-weight:600; line-height:1.48; }
+    /* ---- DYNAMIC PROJECT CARDS ---- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background: #ffffff;
+      border: 1px solid rgba(220, 225, 235, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(8, 26, 53, 0.06);
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+      cursor: pointer;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3.5px;
+      background: linear-gradient(90deg, #c9a227 0%, #efc64d 100%);
+      transition: width 0.45s ease;
+      z-index: 5;
+    }
+    .project-card:hover::before {
+      width: 100%;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 42px rgba(8, 26, 53, 0.16), 0 0 20px rgba(201, 162, 39, 0.2);
+      border-color: rgba(201, 162, 39, 0.85);
+    }
+    .project-img {
+      height: 200px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #f4f7fb 0%, #ffffff 100%);
+      padding: 16px;
+      border-bottom: 1px solid #edf1f6;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 16px rgba(8, 26, 53, 0.18));
+      transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s ease;
+    }
+    .project-card:hover .project-img img {
+      transform: scale(1.08);
+      filter: drop-shadow(0 18px 24px rgba(8, 26, 53, 0.28));
+    }
+    .project-card h3 {
+      color: #071832;
+      font-size: 17px;
+      font-weight: 800;
+      margin: 18px 16px 6px;
+      transition: color 0.3s ease;
+    }
+    .project-card:hover h3 {
+      color: #071832;
+    }
+    .project-card p {
+      color: #5f6d82;
+      font-size: 12.5px;
+      font-weight: 500;
+      line-height: 1.5;
+      padding: 0 18px 22px;
+    }
+
+    /* ---- LIGHTBOX MODAL ---- */
+    .project-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(7, 24, 50, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .project-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .project-modal-content {
+      background: #ffffff;
+      border-radius: 14px;
+      max-width: 720px;
+      width: min(90vw, 720px);
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.85);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+    }
+    .project-modal.open .project-modal-content {
+      transform: scale(1);
+    }
+    .project-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f0f4f9;
+      color: #071832;
+      border: 0;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+    .project-modal-close:hover {
+      background: #071832;
+      color: #c9a227;
+    }
+    .project-modal-img {
+      max-height: 320px;
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 16px 24px rgba(8,26,53,0.2));
+    }
+    .project-modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #071832;
+      margin-bottom: 8px;
+    }
+    .project-modal-desc {
+      font-size: 13.5px;
+      color: #5f6d82;
+      line-height: 1.6;
+    }
+
+    .capabilities {
+      background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+      padding: 64px 0 72px;
+    }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .cap-card {
+      background: #ffffff;
+      border: 1px solid rgba(201, 162, 39, 0.45);
+      border-radius: 8px;
+      text-align: center;
+      padding: 26px 14px 22px;
+      box-shadow: 0 4px 16px rgba(8, 26, 53, 0.05);
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 220px;
+    }
+    .cap-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 162, 39, 0.9);
+      box-shadow: 0 12px 28px rgba(8, 26, 53, 0.12), 0 0 14px rgba(201, 162, 39, 0.2);
+    }
+    .cap-icon {
+      width: 68px;
+      height: 64px;
+      margin: 0 auto 16px;
+      color: #c9a227;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .cap-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .cap-card:hover .cap-icon {
+      transform: scale(1.06);
+    }
+    .cap-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #071832;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .cap-card p {
+      color: #5f6d82;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.48;
+    }
 
     .dark { background:linear-gradient(135deg,#071832,#102445 58%,#071832); color:#fff; }
     .dark .title { color:#fff; }
-    .showcase { padding:52px 0 58px; }
-    .showcase-grid { display:grid; grid-template-columns:1.05fr 1.35fr 1.05fr 1.05fr; grid-auto-rows:155px; gap:12px; }
-    .shot { position:relative; overflow:hidden; border-radius:7px; border:1px solid rgba(255,255,255,.25); background:#0d203e; }
-    .shot img { width:100%; height:100%; object-fit:cover; opacity:.88; }
+    .showcase { padding:60px 0 68px; background:linear-gradient(135deg,#06152b 0%,#0b203e 50%,#06152b 100%); position:relative; }
+    .showcase-grid { display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:165px; gap:14px; max-width:1160px; margin:0 auto; }
+    .shot { position:relative; overflow:hidden; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#0c1c36; box-shadow:0 8px 22px rgba(0,0,0,0.3); transition:all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .shot:hover { transform:translateY(-4px); border-color:rgba(201,162,39,.75); box-shadow:0 14px 32px rgba(0,0,0,0.45), 0 0 18px rgba(201,162,39,0.2); }
+    .shot img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; opacity:.92; transition:transform 0.5s ease, opacity 0.35s ease; }
+    .shot:hover img { transform:scale(1.06); opacity:1; }
     .shot.big { grid-row:span 2; }
     .shot.wide { grid-column:span 2; }
-    .tag { position:absolute; left:10px; bottom:10px; background:#0b2345; color:#fff; border:1px solid rgba(201,162,39,.65); border-radius:4px; padding:5px 10px; font-size:11px; font-weight:800; }
+    .tag { position:absolute; left:12px; bottom:12px; background:rgba(7,24,50,.9); color:#ffffff; border:1px solid rgba(201,162,39,.85); border-radius:5px; padding:6px 12px; font-size:11px; font-weight:800; letter-spacing:0.3px; box-shadow:0 4px 12px rgba(0,0,0,0.35); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); pointer-events:none; transition:all 0.3s ease; z-index:2; }
+    .shot:hover .tag { background:rgba(201,162,39,.95); color:#071832; border-color:#ffffff; box-shadow:0 4px 14px rgba(201,162,39,.4); }
 
-    .timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:52px; position:relative; max-width:1120px; margin:0 auto; }
-    .step { position:relative; text-align:center; padding-top:36px; }
-    .step::after { content:""; position:absolute; top:28px; left:64%; width:78%; border-top:2px dotted #8791a0; }
-    .step:last-child::after { display:none; }
-    .num { position:absolute; top:0; left:20px; width:42px; height:42px; border-radius:50%; background:var(--gold); color:var(--navy); display:grid; place-items:center; font-weight:900; border:4px solid #fff; box-shadow:0 8px 18px rgba(8,26,53,.16); }
-    .step-icon { width:70px; height:70px; margin:0 auto 14px; color:var(--navy); background:#eef2f7; border-radius:50%; padding:14px; border:1px solid rgba(201,162,39,.25); }
-    .step h3 { color:var(--navy); font-size:15px; margin-bottom:7px; }
-    .step p { color:var(--muted); font-size:13px; font-weight:600; line-height:1.48; }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      position: relative;
+      max-width: 1140px;
+      margin: 40px auto 0;
+    }
+    .timeline::after {
+      content: "";
+      position: absolute;
+      top: 24px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      border-top: 2px dashed rgba(201, 162, 39, 0.7);
+      z-index: 1;
+    }
+    .step {
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .step::after {
+      content: "";
+      position: absolute;
+      top: 21px;
+      right: -16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #071832;
+      z-index: 3;
+    }
+    .step:last-child::after { display: none; }
+    .num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #efc64d, #c9a227);
+      color: #071832;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 6px 16px rgba(201, 162, 39, 0.35);
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 4;
+      border: 3px solid #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .step:hover .num {
+      transform: scale(1.1);
+      box-shadow: 0 8px 22px rgba(201, 162, 39, 0.55);
+    }
+    .step-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fffdf7 0%, #f7efe0 100%);
+      border: 2px solid rgba(201, 162, 39, 0.45);
+      box-shadow: 0 10px 26px rgba(201, 162, 39, 0.16), 0 4px 10px rgba(7, 24, 50, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+    .step-icon svg {
+      width: 48px;
+      height: 48px;
+      transition: transform 0.4s ease;
+    }
+    .step:hover .step-icon {
+      transform: translateY(-6px);
+      border-color: #c9a227;
+      box-shadow: 0 16px 36px rgba(201, 162, 39, 0.32), 0 6px 14px rgba(7, 24, 50, 0.08);
+      background: linear-gradient(135deg, #ffffff 0%, #fff7e6 100%);
+    }
+    .step:hover .step-icon svg {
+      transform: scale(1.08);
+    }
+    .step h3 {
+      color: #071832;
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .step p {
+      color: #5f6d82;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.55;
+      max-width: 250px;
+      margin: 0 auto;
+    }
 
-    .trust-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; max-width:1080px; margin:0 auto; }
-    .trust-card { border:1px solid rgba(255,255,255,.2); border-radius:6px; padding:30px 15px; text-align:center; background:rgba(255,255,255,.04); min-height:215px; }
-    .trust-icon { width:66px; height:66px; margin:0 auto 16px; color:var(--gold); }
-    .trust-card h3 { color:#fff; font-size:15px; line-height:1.2; margin-bottom:9px; }
-    .trust-card p { color:rgba(255,255,255,.7); font-size:12px; font-weight:600; line-height:1.48; }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .trust-card {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 32px 16px 28px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 230px;
+    }
+    .trust-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 162, 39, 0.75);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(201, 162, 39, 0.18);
+      background: linear-gradient(180deg, rgba(201, 162, 39, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    }
+    .trust-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 18px;
+      color: #c9a227;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .trust-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .trust-card:hover .trust-icon {
+      transform: scale(1.08);
+    }
+    .trust-card h3 {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .trust-card p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
 
-    .industry-card { padding:24px 14px; }
-    .industry-icon { width:66px; height:66px; margin:0 auto 12px; color:var(--navy); }
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .industry-card {
+      background: #ffffff;
+      border: 1px solid rgba(201, 162, 39, 0.45);
+      border-radius: 8px;
+      text-align: center;
+      padding: 24px 14px 20px;
+      box-shadow: 0 4px 16px rgba(8, 26, 53, 0.05);
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 155px;
+    }
+    .industry-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 162, 39, 0.9);
+      box-shadow: 0 12px 28px rgba(8, 26, 53, 0.12), 0 0 14px rgba(201, 162, 39, 0.2);
+    }
+    .industry-icon {
+      width: 72px;
+      height: 64px;
+      margin: 0 auto 14px;
+      color: #071832;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .industry-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .industry-card:hover .industry-icon {
+      transform: scale(1.06);
+    }
+    .industry-card h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #071832;
+      line-height: 1.25;
+      margin-bottom: 0;
+    }
 
-    .cta { color:#fff; background:linear-gradient(90deg,rgba(7,24,50,.98),rgba(7,24,50,.84),rgba(7,24,50,.48)), url("assets/images/new-2.png") center right / cover no-repeat; padding:52px 0; }
-    .cta .container { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:40px; }
-    .cta h2 { font-size:clamp(32px,4vw,44px); line-height:1.08; margin-bottom:16px; }
-    .cta p { color:rgba(255,255,255,.78); max-width:500px; font-weight:600; margin-bottom:22px; }
+    .cta {
+      color: #ffffff;
+      background: linear-gradient(90deg, #071832 0%, #071832 42%, rgba(7, 24, 50, 0.82) 68%, rgba(7, 24, 50, 0.3) 100%), url("assets/images/new-2.png") center right / cover no-repeat;
+      padding: 68px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta .container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+    }
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+    .cta h2 .gold {
+      color: #c9a227;
+    }
+    .cta p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+    .cta .btn-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .cta .btn {
+      min-height: 48px;
+      padding: 0 28px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.35s ease;
+    }
+    .cta .btn-primary {
+      background: #c9a227;
+      color: #071832;
+      border: 1.5px solid #c9a227;
+      box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3);
+    }
+    .cta .btn-primary:hover {
+      background: #efc64d;
+      border-color: #efc64d;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(201, 162, 39, 0.45);
+    }
+    .cta .btn-outline {
+      background: rgba(7, 24, 50, 0.6);
+      color: #ffffff;
+      border: 1.5px solid rgba(201, 162, 39, 0.75);
+      backdrop-filter: blur(4px);
+    }
+    .cta .btn-outline:hover {
+      background: rgba(201, 162, 39, 0.15);
+      border-color: #c9a227;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
 
     .footer-logo {
       display: inline-block;
@@ -216,25 +754,151 @@
   </section>
 
   <section class="stats-bar">
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-project"></use></svg></div><div><strong>500+</strong><span>Projects Delivered</span></div></div>
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><div><strong>8+</strong><span>Project Categories</span></div></div>
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-quality"></use></svg></div><div><strong>Precision</strong><span>Fabrication</span></div></div>
-    <div class="stat-item"><div class="icon stat-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><div><strong>Timely</strong><span>Execution</span></div></div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 50H56" stroke-width="3"/>
+          <path d="M12 50V28L24 34V28L36 34V24H52V50H12Z"/>
+          <rect x="42" y="14" width="4" height="10"/>
+          <path d="M48 12C46 10 47 7 51 7C53 8 55 10 52 12Z" stroke-width="2"/>
+          <rect x="16" y="40" width="5" height="5" fill="#c9a227"/>
+          <rect x="26" y="40" width="5" height="5" fill="#c9a227"/>
+          <rect x="36" y="40" width="5" height="5" fill="#c9a227"/>
+          <rect x="44" y="30" width="4" height="5" fill="#c9a227"/>
+          <path d="M12 16L16 20L24 12" stroke-width="3"/>
+        </svg>
+      </div>
+      <div>
+        <strong>100+</strong>
+        <span>Projects Delivered</span>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="10" stroke-width="2.5"/>
+          <circle cx="32" cy="32" r="4" fill="#c9a227"/>
+          <circle cx="18" cy="18" r="6"/>
+          <circle cx="46" cy="18" r="6"/>
+          <circle cx="18" cy="46" r="6"/>
+          <circle cx="46" cy="46" r="6"/>
+          <path d="M25 25L21 21M39 25L43 21M25 39L21 43M39 39L43 43"/>
+          <path d="M32 14V22M32 42V50M14 32H22M42 32H50"/>
+        </svg>
+      </div>
+      <div>
+        <strong>8+</strong>
+        <span>Project Categories</span>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="14" stroke-width="2.5"/>
+          <path d="M32 10V18M32 46V54M10 32H18M46 32H54M16.4 16.4L22.1 22.1M41.9 41.9L47.6 47.6M16.4 47.6L22.1 41.9M41.9 22.1L47.6 16.4" stroke-width="3"/>
+          <circle cx="32" cy="32" r="8" stroke-dasharray="3 2"/>
+          <circle cx="32" cy="32" r="3" fill="#c9a227"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Precision</strong>
+        <span>Fabrication</span>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="18" stroke-width="2.5"/>
+          <path d="M32 18V32H42" stroke-width="3.5"/>
+          <circle cx="32" cy="32" r="3" fill="#c9a227"/>
+          <path d="M32 10V14M32 50V54M10 32H14M50 32H54M16.4 16.4L19.3 19.3M44.7 44.7L47.6 47.6M16.4 47.6L19.3 44.7M44.7 19.3L47.6 16.4"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Timely</strong>
+        <span>Execution</span>
+      </div>
+    </div>
   </section>
 
   <main>
     <section class="section">
       <div class="container">
         <div class="section-head"><div class="eyebrow">Featured Projects</div><h2 class="title">Our Recent <span class="gold">Engineering Work</span></h2><p class="sub">A glimpse of our completed projects across equipment, structures and industrial solutions.</p></div>
+        
+        <div class="project-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="vessels">Process Vessels</button>
+          <button class="filter-btn" data-filter="exchangers">Heat Exchangers</button>
+          <button class="filter-btn" data-filter="transformers">Transformer Tanks</button>
+          <button class="filter-btn" data-filter="structural">Structural Fabrication</button>
+        </div>
+
         <div class="project-grid">
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-1.png" alt="Transformer Tank"></div><h3>Transformer Tank</h3><p>Precision engineered transformer tanks for reliable performance.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-8.png" alt="Pressure Vessel"></div><h3>Pressure Vessel</h3><p>High-pressure vessels engineered for safety and performance.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-9.png" alt="Internal Coil Vessel"></div><h3>Internal Coil Vessel</h3><p>Efficient coil systems for heating and cooling applications.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-5.png" alt="Limpet Coil Vessel"></div><h3>Limpet Coil Vessel</h3><p>Limpet coil vessels for optimal heat transfer and efficiency.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-10.png" alt="Heat Exchanger"></div><h3>Heat Exchanger</h3><p>Robust heat exchangers for various industrial needs.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-11.png" alt="Box Type Heat Exchanger"></div><h3>Box Type Heat Exchanger</h3><p>Compact and efficient box type heat exchanger solutions.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-6.png" alt="Reaction Vessel"></div><h3>Reaction Vessel</h3><p>Custom designed reaction vessels built for chemical processes.</p></article>
-          <article class="project-card"><div class="project-img"><img src="assets/images/new-12.png" alt="Structural Fabrication"></div><h3>Structural Fabrication</h3><p>High-quality structural fabrication for industrial infrastructure.</p></article>
+          <article class="project-card" data-category="transformers">
+            <div class="project-img">
+              <img src="assets/images/new-1.png" alt="Transformer Tank">
+              <span class="project-tag">Transformer Tank</span>
+            </div>
+            <h3>Transformer Tank</h3>
+            <p>Precision engineered transformer tanks for reliable performance.</p>
+          </article>
+          <article class="project-card" data-category="vessels">
+            <div class="project-img">
+              <img src="assets/images/new-8.png" alt="Pressure Vessel">
+              <span class="project-tag">Pipe Spool</span>
+            </div>
+            <h3>Pipe Spool &amp; Piping</h3>
+            <p>High-pressure vessels and pipe spools engineered for safety and performance.</p>
+          </article>
+          <article class="project-card" data-category="vessels">
+            <div class="project-img">
+              <img src="assets/images/new-9.png" alt="Storage Tanks">
+              <span class="project-tag">Storage Tanks</span>
+            </div>
+            <h3>Storage Tanks</h3>
+            <p>Efficient storage tanks and coil systems for heating and cooling applications.</p>
+          </article>
+          <article class="project-card" data-category="vessels">
+            <div class="project-img">
+              <img src="assets/images/new-5.png" alt="Reboiler Vessel">
+              <span class="project-tag">Reboiler Vessel</span>
+            </div>
+            <h3>Reboiler Vessel</h3>
+            <p>Limpet coil vessels for optimal heat transfer and efficiency.</p>
+          </article>
+          <article class="project-card" data-category="vessels">
+            <div class="project-img">
+              <img src="assets/images/new-10.png" alt="Pressure Vessel">
+              <span class="project-tag">Pressure Vessel</span>
+            </div>
+            <h3>Pressure Vessel</h3>
+            <p>Robust pressure vessels built to withstand high pressure industrial operations.</p>
+          </article>
+          <article class="project-card" data-category="exchangers">
+            <div class="project-img">
+              <img src="assets/images/new-11.png" alt="Distillation Column">
+              <span class="project-tag">Distillation Column</span>
+            </div>
+            <h3>Distillation Column</h3>
+            <p>Engineered distillation columns for efficient separation, purification and industrial process applications.</p>
+          </article>
+          <article class="project-card" data-category="vessels">
+            <div class="project-img">
+              <img src="assets/images/new-6.png" alt="Process Equipment">
+              <span class="project-tag">Process Equipment</span>
+            </div>
+            <h3>Process Equipment</h3>
+            <p>Custom-engineered process equipment, reactors, and specialized vessels built for chemical processing.</p>
+          </article>
+          <article class="project-card" data-category="structural">
+            <div class="project-img">
+              <img src="assets/images/Structural Fabrication.png" alt="Structural Fabrication">
+              <span class="project-tag">Structural Fabrication</span>
+            </div>
+            <h3>Structural Fabrication</h3>
+            <p>Precision structural fabrication for industrial platforms, supports, frames, and plant infrastructure.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -243,12 +907,102 @@
       <div class="container">
         <div class="section-head"><div class="eyebrow">What We Build</div><h2 class="title">Our <span class="gold">Capabilities.</span> Your Advantage.</h2></div>
         <div class="cap-grid">
-          <article class="cap-card"><div class="icon cap-icon"><svg viewBox="0 0 24 24"><use href="#i-factory"></use></svg></div><h3>Process Equipment</h3><p>Custom equipment for chemical and process industries.</p></article>
-          <article class="cap-card"><div class="icon cap-icon"><svg viewBox="0 0 24 24"><use href="#i-vessel"></use></svg></div><h3>Pressure Systems</h3><p>Safe and reliable pressure vessels and systems.</p></article>
-          <article class="cap-card"><div class="icon cap-icon"><svg viewBox="0 0 24 24"><use href="#i-heat"></use></svg></div><h3>Heat Transfer Equipment</h3><p>High-efficiency heat exchangers and thermal systems.</p></article>
-          <article class="cap-card"><div class="icon cap-icon"><svg viewBox="0 0 24 24"><use href="#i-project"></use></svg></div><h3>Industrial Structures</h3><p>Strong and durable structural fabrication solutions.</p></article>
-          <article class="cap-card"><div class="icon cap-icon"><svg viewBox="0 0 24 24"><use href="#i-tank"></use></svg></div><h3>Transformer Components</h3><p>Tanks and components for power distribution.</p></article>
-          <article class="cap-card"><div class="icon cap-icon"><svg viewBox="0 0 24 24"><use href="#i-hardhat"></use></svg></div><h3>On-Site Fabrication</h3><p>Field fabrication and erection with precision and safety.</p></article>
+          <article class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="22" y="16" width="16" height="34" rx="3"/>
+                <path d="M22 22H38M22 30H38M22 38H38M22 44H38"/>
+                <path d="M22 16C22 12 42 12 42 16V22H38"/>
+                <path d="M30 13V8H44V26H38"/>
+                <circle cx="44" cy="8" r="1.5" fill="#c9a227"/>
+                <rect x="10" y="28" width="8" height="22" rx="2"/>
+                <path d="M14 28V24H22"/>
+                <path d="M18 50L14 54M42 50L46 54M8 54H54" stroke-width="3"/>
+              </svg>
+            </div>
+            <h3>Process Equipment</h3>
+            <p>Custom equipment for chemical &amp; process industries.</p>
+          </article>
+          <article class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="24" r="16" stroke-width="3"/>
+                <circle cx="32" cy="24" r="12" stroke-width="1.5"/>
+                <path d="M32 14V16M22 24H24M40 24H42M25 17L26.5 18.5M39 17L37.5 18.5"/>
+                <path d="M32 24L39 17" stroke-width="3"/>
+                <circle cx="32" cy="24" r="3.5" fill="#c9a227"/>
+                <path d="M32 40V48"/>
+                <rect x="26" y="48" width="12" height="6" rx="1.5" stroke-width="2.5"/>
+                <path d="M20 54H44" stroke-width="3"/>
+              </svg>
+            </div>
+            <h3>Pressure Systems</h3>
+            <p>Safe and reliable pressure vessels &amp; systems.</p>
+          </article>
+          <article class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="20" width="36" height="24" rx="3" stroke-width="2.5"/>
+                <path d="M14 26H50M14 32H50M14 38H50"/>
+                <path d="M22 20V44M30 20V44M38 20V44M46 20V44"/>
+                <path d="M14 20C10 20 10 44 14 44"/>
+                <path d="M50 20C54 20 54 44 50 44"/>
+                <rect x="8" y="28" width="4" height="8" rx="1"/>
+                <rect x="52" y="28" width="4" height="8" rx="1"/>
+                <rect x="20" y="14" width="6" height="6" rx="1"/>
+                <rect x="38" y="44" width="6" height="6" rx="1"/>
+              </svg>
+            </div>
+            <h3>Heat Transfer Equipment</h3>
+            <p>High-efficiency heat exchangers &amp; thermal systems.</p>
+          </article>
+          <article class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="52" width="52" height="3" rx="1.5"/>
+                <path d="M16 52V18L44 12V18L24 22V52" stroke-width="2.5"/>
+                <path d="M16 26L24 18M16 36L24 28M16 46L24 38"/>
+                <path d="M16 18H50L44 26H16"/>
+                <path d="M42 26V38"/>
+                <path d="M42 38C40 38 38 40 38 42C38 44 42 45 44 43" stroke-width="3"/>
+                <rect x="30" y="44" width="24" height="6" rx="1" fill="#c9a227" stroke="none"/>
+              </svg>
+            </div>
+            <h3>Industrial Structures</h3>
+            <p>Strong and durable structural fabrication solutions.</p>
+          </article>
+          <article class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="24" width="36" height="26" rx="3" stroke-width="2.5"/>
+                <path d="M20 24V50M26 24V50M32 24V50M38 24V50M44 24V50"/>
+                <path d="M20 24V14M32 24V14M44 24V14"/>
+                <ellipse cx="20" cy="14" rx="3" ry="1.5" fill="#c9a227"/>
+                <ellipse cx="32" cy="14" rx="3" ry="1.5" fill="#c9a227"/>
+                <ellipse cx="44" cy="14" rx="3" ry="1.5" fill="#c9a227"/>
+                <ellipse cx="20" cy="18" rx="2.5" ry="1" fill="#c9a227"/>
+                <ellipse cx="32" cy="18" rx="2.5" ry="1" fill="#c9a227"/>
+                <ellipse cx="44" cy="18" rx="2.5" ry="1" fill="#c9a227"/>
+                <rect x="10" y="50" width="44" height="4" rx="1"/>
+              </svg>
+            </div>
+            <h3>Transformer Components</h3>
+            <p>Tanks and components for power distribution.</p>
+          </article>
+          <article class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 22C20 15 25 11 32 11C39 11 44 15 44 22V25H20V22Z"/>
+                <path d="M14 25H50C51.5 25 52 26 52 27C52 28 51 29 49 29H15C13 29 12 28 12 27C12 26 12.5 25 14 25Z"/>
+                <path d="M32 11V22"/>
+                <path d="M24 29V33C24 37 27 40 32 40C37 40 40 37 40 33V29"/>
+                <path d="M14 52V48C14 44 18 42 24 42H40C46 42 50 44 50 48V52"/>
+                <path d="M24 42L28 52M40 42L36 52M32 42V52"/>
+              </svg>
+            </div>
+            <h3>On-Site Fabrication</h3>
+            <p>Field fabrication and erection with precision and safety.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -258,13 +1012,13 @@
         <div class="section-head"><div class="eyebrow">Project Showcase</div><h2 class="title">Project <span class="gold">Showcase</span></h2></div>
         <div class="showcase-grid">
           <div class="shot"><img src="assets/images/new-1.png" alt="Transformer Tank"><span class="tag">Transformer Tank</span></div>
-          <div class="shot"><img src="assets/images/new-2.png" alt="Heat exchanger"><span class="tag">Heat Exchanger</span></div>
-          <div class="shot big"><img src="assets/images/new-3.png" alt="Pressure vessel"><span class="tag">Structural Work</span></div>
-          <div class="shot"><img src="assets/images/new-4.png" alt="Structure"></div>
-          <div class="shot"><img src="assets/images/new-5.png" alt="Transformer tank"><span class="tag">Transformer Tank</span></div>
-          <div class="shot wide"><img src="assets/images/new-6.png" alt="Workshop"></div>
-          <div class="shot"><img src="assets/images/new-7.png" alt="Industrial equipment"></div>
-          <div class="shot"><img src="assets/images/new-8.png" alt="Fabrication"></div>
+          <div class="shot"><img src="assets/images/new-2.png" alt="Transformer Tank"><span class="tag">Transformer Tank</span></div>
+          <div class="shot big"><img src="assets/images/new-3.png" alt="Chemical Reactor"><span class="tag">Chemical Reactor</span></div>
+          <div class="shot big"><img src="assets/images/new-4.png" alt="Heat Exchanger"><span class="tag">Heat Exchanger</span></div>
+          <div class="shot wide"><img src="assets/images/new-5.png" alt="Reboiler Vessel"><span class="tag">Reboiler Vessel</span></div>
+          <div class="shot wide"><img src="assets/images/new-6.png" alt="Process Equipment"><span class="tag">Process Equipment</span></div>
+          <div class="shot"><img src="assets/images/new-7.png" alt="Pressure Vessel"><span class="tag">Pressure Vessel</span></div>
+          <div class="shot"><img src="assets/images/new-8.png" alt="Pipe Spool &amp; Structure"><span class="tag">Pipe Spool &amp; Structure</span></div>
         </div>
       </div>
     </section>
@@ -273,10 +1027,75 @@
       <div class="container">
         <div class="section-head"><div class="eyebrow">How We Execute Projects</div><h2 class="title">From Concept to <span class="gold">Completion</span></h2></div>
         <div class="timeline">
-          <article class="step"><div class="num">01</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-plan"></use></svg></div><h3>Requirement Study</h3><p>We analyze your requirements in detail to understand the project scope and objectives.</p></article>
-          <article class="step"><div class="num">02</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-project"></use></svg></div><h3>Design &amp; Planning</h3><p>Our engineers create precise designs and plan resources for seamless execution.</p></article>
-          <article class="step"><div class="num">03</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-quality"></use></svg></div><h3>Fabrication &amp; Quality Check</h3><p>High-quality fabrication with strict inspections at every stage of manufacturing.</p></article>
-          <article class="step"><div class="num">04</div><div class="icon step-icon"><svg viewBox="0 0 24 24"><use href="#i-delivery"></use></svg></div><h3>Delivery / Installation</h3><p>Timely delivery and on-site installation ensuring safe and smooth operations.</p></article>
+          <article class="step">
+            <div class="num">01</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="10" width="36" height="44" rx="5" fill="#ffffff" stroke="#071832" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M24 10V7C24 5.89543 24.8954 5 26 5H38C39.1046 5 40 5.89543 40 7V10" fill="#f7efe0" stroke="#071832" stroke-width="3" stroke-linejoin="round"/>
+                <circle cx="32" cy="8" r="1.5" fill="#071832"/>
+                <line x1="24" y1="20" x2="42" y2="20" stroke="#071832" stroke-width="3" stroke-linecap="round"/>
+                <line x1="24" y1="27" x2="38" y2="27" stroke="#071832" stroke-width="3" stroke-linecap="round"/>
+                <line x1="24" y1="34" x2="34" y2="34" stroke="#071832" stroke-width="3" stroke-linecap="round"/>
+                <path d="M20 20L21 21L23 19" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 27L21 28L23 26" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 34L21 35L23 33" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="39" cy="39" r="9" fill="#ffffff" stroke="#071832" stroke-width="3"/>
+                <line x1="45" y1="45" x2="54" y2="54" stroke="#071832" stroke-width="4.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Requirement Study</h3>
+            <p>We analyze your requirements in detail to understand the project scope and objectives.</p>
+          </article>
+          <article class="step">
+            <div class="num">02</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="12" width="44" height="40" rx="4" fill="#ffffff" stroke="#071832" stroke-width="3"/>
+                <path d="M10 24H54M24 24V52M40 24V52" stroke="#071832" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <rect x="28" y="28" width="8" height="8" rx="1" fill="#f7efe0" stroke="#071832" stroke-width="2"/>
+                <path d="M14 30H20M14 36H20M14 42H20" stroke="#071832" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M42 10L50 18L26 42H18V34L42 10Z" fill="#ffffff" stroke="#071832" stroke-width="3" stroke-linejoin="round"/>
+                <line x1="38" y1="14" x2="46" y2="22" stroke="#c9a227" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3>Design &amp; Planning</h3>
+            <p>Our engineers create precise designs and plan resources for seamless execution.</p>
+          </article>
+          <article class="step">
+            <div class="num">03</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 10C21 10 16 16 16 26V36C16 43 23 48 32 48C41 48 48 43 48 36V26C48 16 43 10 32 10Z" fill="#071832"/>
+                <rect x="22" y="22" width="20" height="9" rx="2" fill="#f7efe0" stroke="#c9a227" stroke-width="2.5"/>
+                <path d="M26 37H38M28 41H36" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                <path d="M46 44L56 50" stroke="#071832" stroke-width="4" stroke-linecap="round"/>
+                <path d="M44 38L50 34M48 44L56 42M42 48L46 54" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="44" cy="42" r="3" fill="#c9a227"/>
+              </svg>
+            </div>
+            <h3>Fabrication &amp; Quality Check</h3>
+            <p>High-quality fabrication with strict inspections at every stage of manufacturing.</p>
+          </article>
+          <article class="step">
+            <div class="num">04</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="16" width="34" height="24" rx="3" fill="#ffffff" stroke="#071832" stroke-width="3"/>
+                <line x1="16" y1="16" x2="16" y2="40" stroke="#071832" stroke-width="2"/>
+                <line x1="26" y1="16" x2="26" y2="40" stroke="#071832" stroke-width="2"/>
+                <path d="M40 24H50L57 31V40H40V24Z" fill="#071832"/>
+                <path d="M43 27H49L53 32V34H43V27Z" fill="#f7efe0"/>
+                <circle cx="17" cy="44" r="5" fill="#ffffff" stroke="#071832" stroke-width="3"/>
+                <circle cx="17" cy="44" r="2" fill="#071832"/>
+                <circle cx="47" cy="44" r="5" fill="#ffffff" stroke="#071832" stroke-width="3"/>
+                <circle cx="47" cy="44" r="2" fill="#071832"/>
+                <line x1="2" y1="49" x2="62" y2="49" stroke="#071832" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Delivery / Installation</h3>
+            <p>Timely delivery and on-site installation ensuring safe and smooth operations.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -285,12 +1104,93 @@
       <div class="container">
         <div class="section-head"><div class="eyebrow">Why Clients Choose Us</div><h2 class="title">Why Clients Trust <span class="gold">Our Work</span></h2></div>
         <div class="trust-grid">
-          <article class="trust-card"><div class="icon trust-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><h3>Precision Manufacturing</h3><p>Advanced machines and precise engineering for best results.</p></article>
-          <article class="trust-card"><div class="icon trust-icon"><svg viewBox="0 0 24 24"><use href="#i-team"></use></svg></div><h3>Skilled Workforce</h3><p>Experienced engineers and technicians ensure quality execution.</p></article>
-          <article class="trust-card"><div class="icon trust-icon"><svg viewBox="0 0 24 24"><use href="#i-quality"></use></svg></div><h3>Strict Quality Checks</h3><p>Multiple inspections and tests for safe and reliable performance.</p></article>
-          <article class="trust-card"><div class="icon trust-icon"><svg viewBox="0 0 24 24"><use href="#i-vessel"></use></svg></div><h3>Competitive Pricing</h3><p>Cost-effective solutions without compromising on quality.</p></article>
-          <article class="trust-card"><div class="icon trust-icon"><svg viewBox="0 0 24 24"><use href="#i-gear"></use></svg></div><h3>Custom Solutions</h3><p>Tailored solutions to meet unique project requirements.</p></article>
-          <article class="trust-card"><div class="icon trust-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"></use></svg></div><h3>On-Time Delivery</h3><p>Commitment to timelines and efficient project management.</p></article>
+          <article class="trust-card">
+            <div class="trust-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="26" cy="26" r="10" stroke-width="2.5"/>
+                <path d="M26 12V16M26 36V40M12 26H16M36 26H40M16 16L19 19M33 33L36 36M16 36L19 33M33 19L36 16"/>
+                <circle cx="26" cy="26" r="4"/>
+                <path d="M42 16H52V48H42"/>
+                <path d="M47 16V10M47 48V54"/>
+                <rect x="44" y="24" width="6" height="12" rx="1" fill="#c9a227"/>
+                <path d="M38 30H44"/>
+                <path d="M12 48H54" stroke-width="3"/>
+              </svg>
+            </div>
+            <h3>Precision Manufacturing</h3>
+            <p>Advanced machines and precise engineering for best results.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 28C16 19 23 14 32 14C41 14 48 19 48 28V32H16V28Z"/>
+                <path d="M12 32H52C53.5 32 54 33 54 34C54 35 53 36 51 36H13C11 36 10 35 10 34C10 33 10.5 32 12 32Z"/>
+                <path d="M32 14V28M24 16V28M40 16V28"/>
+                <circle cx="44" cy="44" r="9" fill="#071832" stroke="#c9a227" stroke-width="2.5"/>
+                <path d="M40 44L43 47L48 41"/>
+                <path d="M16 52C16 45 22 42 28 42H34"/>
+              </svg>
+            </div>
+            <h3>Skilled Workforce</h3>
+            <p>Experienced engineers and technicians ensure quality execution.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="30" r="16" stroke-width="2.5"/>
+                <path d="M32 18V20M20 30H22M42 30H44M23.5 21.5L25 23M40.5 21.5L39 23"/>
+                <path d="M32 30L38 22" stroke-width="3"/>
+                <circle cx="32" cy="30" r="3" fill="#c9a227"/>
+                <circle cx="46" cy="46" r="7" stroke-width="2.5"/>
+                <path d="M46 37V39M46 53V55M37 46H39M53 46H55"/>
+                <path d="M20 40L14 46M44 20L48 16"/>
+                <circle cx="14" cy="46" r="2" fill="#c9a227"/>
+              </svg>
+            </div>
+            <h3>Strict Quality Checks</h3>
+            <p>Multiple inspections and tests for safe and reliable performance.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 12C26 12 28 8 32 8C36 8 38 12 38 12Z"/>
+                <path d="M24 16H40L42 20H22L24 16Z"/>
+                <circle cx="32" cy="18" r="2.5" fill="#c9a227"/>
+                <path d="M30 18L26 24M34 18L38 24"/>
+                <path d="M22 20C16 26 14 36 18 46C21 53 43 53 46 46C50 36 48 26 42 20H22Z"/>
+                <circle cx="32" cy="36" r="8"/>
+                <path d="M32 31V41M29 34H35M29 38H35"/>
+              </svg>
+            </div>
+            <h3>Competitive Pricing</h3>
+            <p>Cost-effective solutions without compromising on quality.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="14"/>
+                <path d="M32 12V18M32 46V52M12 32H18M46 32H52M18 18L22.2 22.2M41.8 41.8L46 46M18 46L22.2 41.8M41.8 22.2L46 18"/>
+                <path d="M27 30C27 27 29 25 32 25C35 25 37 27 37 30C37 32 35 33 34 35H30C29 33 27 32 27 30Z"/>
+                <path d="M30 38H34"/>
+                <path d="M32 35V38"/>
+              </svg>
+            </div>
+            <h3>Custom Solutions</h3>
+            <p>Tailored solutions to meet unique project requirements.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="34" cy="34" r="16" stroke-width="2.5"/>
+                <path d="M34 22V34H42" stroke-width="3"/>
+                <circle cx="34" cy="34" r="2.5" fill="#c9a227"/>
+                <path d="M12 24H20M8 30H16M14 36H20"/>
+                <path d="M30 14H38M34 14V18"/>
+              </svg>
+            </div>
+            <h3>On-Time Delivery</h3>
+            <p>Commitment to timelines and efficient project management.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -299,12 +1199,117 @@
       <div class="container">
         <div class="section-head"><div class="eyebrow">Industries We Serve</div><h2 class="title">Industries We Serve Through <span class="gold">Our Projects</span></h2></div>
         <div class="industry-grid">
-          <article class="industry-card"><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-factory"></use></svg></div><h3>Chemical Plants</h3></article>
-          <article class="industry-card"><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-tank"></use></svg></div><h3>Pharmaceuticals</h3></article>
-          <article class="industry-card"><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-vessel"></use></svg></div><h3>Oil &amp; Gas</h3></article>
-          <article class="industry-card"><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-heat"></use></svg></div><h3>Power Generation</h3></article>
-          <article class="industry-card"><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-project"></use></svg></div><h3>Industrial Manufacturing</h3></article>
-          <article class="industry-card"><div class="icon industry-icon"><svg viewBox="0 0 24 24"><use href="#i-project"></use></svg></div><h3>Infrastructure</h3></article>
+          <article class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 64 64" fill="#071832" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="54" width="56" height="3" rx="1.5"/>
+                <rect x="10" y="34" width="4" height="20" rx="1"/>
+                <ellipse cx="12" cy="34" rx="2" ry="1"/>
+                <rect x="18" y="16" width="10" height="38" rx="2"/>
+                <ellipse cx="23" cy="16" rx="5" ry="2"/>
+                <rect x="16" y="22" width="14" height="2.5" rx="1"/>
+                <rect x="16" y="30" width="14" height="2.5" rx="1"/>
+                <rect x="16" y="38" width="14" height="2.5" rx="1"/>
+                <rect x="16" y="46" width="14" height="2.5" rx="1"/>
+                <path d="M28 26H34V54H28V26Z"/>
+                <rect x="34" y="10" width="10" height="44" rx="2"/>
+                <ellipse cx="39" cy="10" rx="5" ry="2"/>
+                <rect x="32" y="18" width="14" height="2.5" rx="1"/>
+                <rect x="32" y="26" width="14" height="2.5" rx="1"/>
+                <rect x="32" y="34" width="14" height="2.5" rx="1"/>
+                <rect x="32" y="42" width="14" height="2.5" rx="1"/>
+                <ellipse cx="50" cy="42" rx="7" ry="7"/>
+                <rect x="48" y="49" width="4" height="5"/>
+              </svg>
+            </div>
+            <h3>Chemical Plants</h3>
+          </article>
+          <article class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 64 64" fill="#071832" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="10" width="22" height="6" rx="2"/>
+                <rect x="16" y="16" width="18" height="4" rx="1"/>
+                <path d="M12 20H38C40.2 20 42 21.8 42 24V48C42 50.2 40.2 52 38 52H12C9.8 52 8 50.2 8 48V24C8 21.8 9.8 20 12 20Z"/>
+                <circle cx="25" cy="36" r="8" fill="#ffffff"/>
+                <path d="M25 31V41M20 36H30" stroke="#071832" stroke-width="2.5" stroke-linecap="round"/>
+                <g transform="rotate(-35 48 40)">
+                  <rect x="40" y="30" width="16" height="24" rx="8" fill="#071832"/>
+                  <path d="M40 42H56" stroke="#ffffff" stroke-width="2"/>
+                </g>
+              </svg>
+            </div>
+            <h3>Pharmaceuticals</h3>
+          </article>
+          <article class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 64 64" fill="#071832" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="52" width="52" height="3" rx="1.5"/>
+                <rect x="12" y="38" width="4" height="14"/>
+                <rect x="10" y="36" width="8" height="3"/>
+                <line x1="14" y1="20" x2="14" y2="36" stroke="#071832" stroke-width="2.5"/>
+                <path d="M26 52L36 24L46 52H38L36 32L34 52H26Z"/>
+                <rect x="33" y="38" width="6" height="3"/>
+                <rect x="30" y="46" width="12" height="3"/>
+                <path d="M10 18C10 18 20 18 36 22L54 28V32L36 26L10 20V18Z"/>
+                <path d="M8 20C6 20 4 23 4 26C4 28 6 30 10 30V20H8Z"/>
+                <circle cx="52" cy="44" r="6"/>
+                <path d="M50 30L52 44" stroke="#071832" stroke-width="3"/>
+              </svg>
+            </div>
+            <h3>Oil &amp; Gas</h3>
+          </article>
+          <article class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 64 64" fill="#071832" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="52" width="52" height="3" rx="1.5"/>
+                <path d="M14 52C16 38 18 30 16 22H32C30 30 32 38 34 52H14Z"/>
+                <ellipse cx="24" cy="22" rx="8" ry="2" fill="#ffffff" stroke="#071832" stroke-width="2"/>
+                <path d="M34 52C36 40 37 34 36 28H48C47 34 48 40 50 52H34Z"/>
+                <ellipse cx="42" cy="28" rx="6" ry="1.5" fill="#ffffff" stroke="#071832" stroke-width="2"/>
+                <path d="M20 16C18 14 19 10 23 10C24 8 28 8 30 10C32 9 34 11 33 13C35 14 34 17 31 17C29 18 21 18 20 16Z"/>
+                <path d="M38 22C37 20 38 17 41 17C42 15 45 15 47 17C48 16 50 18 49 19C50 20 50 22 47 22H38Z"/>
+              </svg>
+            </div>
+            <h3>Power Generation</h3>
+          </article>
+          <article class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 64 64" fill="#071832" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="52" width="56" height="3" rx="1.5"/>
+                <path d="M8 52V34L18 42V34L28 42V34L38 42V26H56V52H8Z"/>
+                <rect x="44" y="14" width="4" height="12"/>
+                <rect x="50" y="18" width="4" height="8"/>
+                <rect x="12" y="44" width="4" height="5" fill="#ffffff"/>
+                <rect x="22" y="44" width="4" height="5" fill="#ffffff"/>
+                <rect x="32" y="44" width="4" height="5" fill="#ffffff"/>
+                <rect x="42" y="32" width="4" height="5" fill="#ffffff"/>
+                <rect x="48" y="32" width="4" height="5" fill="#ffffff"/>
+                <rect x="42" y="42" width="4" height="5" fill="#ffffff"/>
+                <rect x="48" y="42" width="4" height="5" fill="#ffffff"/>
+              </svg>
+            </div>
+            <h3>Structural Fabrication</h3>
+          </article>
+          <article class="industry-card">
+            <div class="industry-icon">
+              <svg viewBox="0 0 64 64" fill="#071832" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="50" width="56" height="3" rx="1.5"/>
+                <path d="M4 38C20 36 44 36 60 38V42H4V38Z"/>
+                <path d="M22 14L18 50H26L22 14Z"/>
+                <path d="M42 14L38 50H46L42 14Z"/>
+                <rect x="20" y="12" width="4" height="3"/>
+                <rect x="40" y="12" width="4" height="3"/>
+                <path d="M4 38C12 28 20 15 22 14C24 15 32 28 32 37C32 28 40 15 42 14C44 15 52 28 60 38" stroke="#071832" stroke-width="2.5" fill="none"/>
+                <line x1="12" y1="34" x2="12" y2="38" stroke="#071832" stroke-width="1.5"/>
+                <line x1="16" y1="28" x2="16" y2="38" stroke="#071832" stroke-width="1.5"/>
+                <line x1="28" y1="28" x2="28" y2="37" stroke="#071832" stroke-width="1.5"/>
+                <line x1="36" y1="28" x2="36" y2="37" stroke="#071832" stroke-width="1.5"/>
+                <line x1="48" y1="28" x2="48" y2="38" stroke="#071832" stroke-width="1.5"/>
+                <line x1="52" y1="34" x2="52" y2="38" stroke="#071832" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Infrastructure</h3>
+          </article>
         </div>
       </div>
     </section>
