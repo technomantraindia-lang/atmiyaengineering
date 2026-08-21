@@ -1586,8 +1586,11 @@ textarea.form-control.textarea-dynamic {
 
 /* ---- RESPONSIVE CONTACT STYLES ---- */
 @media (max-width: 992px) {
-  .contact-hero-grid { grid-template-columns: 1fr; gap: 30px; }
-  .contact-hero-img-wrap img { height: 280px; }
+  .contact-hero { padding: 110px 0 60px !important; }
+  .contact-hero-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+  .contact-hero-title { font-size: 2.2rem !important; }
+  .contact-hero-sub { max-width: 100% !important; }
+  .contact-hero-img-wrap img { height: 260px !important; }
   .contact-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .discuss-grid { grid-template-columns: 1fr; }
   .ways-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1595,8 +1598,25 @@ textarea.form-control.textarea-dynamic {
   .faq-grid { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 768px) {
+  .contact-hero { padding: 100px 0 50px !important; }
+  .contact-hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .contact-hero-crumbs { font-size: 0.78rem !important; margin-bottom: 12px !important; }
+  .contact-pill-badge { font-size: 0.72rem !important; padding: 5px 14px !important; margin-bottom: 14px !important; white-space: normal !important; text-align: left !important; }
+  .contact-hero-title { font-size: 1.95rem !important; line-height: 1.2 !important; margin-bottom: 14px !important; }
+  .contact-hero-sub { font-size: 0.92rem !important; line-height: 1.55 !important; margin-bottom: 22px !important; }
+  .contact-hero-btns { flex-direction: column !important; width: 100% !important; gap: 12px !important; align-items: stretch !important; }
+  .btn-contact-gold, .btn-contact-outline { width: 100% !important; padding: 13px 20px !important; justify-content: center !important; text-align: center !important; }
+  .contact-hero-right { width: 100% !important; }
+  .contact-hero-img-wrap { border-radius: 14px !important; max-width: 100% !important; }
+  .contact-hero-img-wrap img { height: 220px !important; padding: 10px !important; }
+}
+
 @media (max-width: 576px) {
-  .contact-hero-title { font-size: 2rem; }
+  .contact-hero { padding: 90px 0 40px !important; }
+  .contact-hero-title { font-size: 1.75rem !important; }
+  .contact-hero-sub { font-size: 0.88rem !important; }
+  .contact-hero-img-wrap img { height: 190px !important; }
   .contact-stats-grid { grid-template-columns: 1fr; }
   .form-group-row { grid-template-columns: 1fr; }
   .ways-grid { grid-template-columns: 1fr; }
