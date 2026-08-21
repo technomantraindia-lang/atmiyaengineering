@@ -562,9 +562,24 @@
       .hero::before { width: 96vw; height: 300px; right: -34px; bottom: 6px; opacity: .52; }
       .hero-copy { width: calc(100% - 32px); margin-left: 16px; padding-top: 0; padding-bottom: 88px; }
       .stats-bar, .services-grid, .process-grid, .why-grid, .industries-grid, .footer-grid { grid-template-columns: 1fr; }
-      .stats-bar { margin-top: 0; border-radius: 0; width: 100%; }
-      .stat-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.16); padding: 0 0 18px; }
-      .stat-item:last-child { border-bottom: 0; padding-bottom: 0; }
+      .stats-bar { margin-top: 0; border-radius: 0; width: 100%; padding: 24px 20px; gap: 16px; }
+      .stat-item { 
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 18px !important;
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,.16) !important;
+        padding: 14px 10px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 320px !important;
+      }
+      .stat-item:last-child { border-bottom: 0 !important; padding-bottom: 0 !important; }
+      .stat-item div { text-align: left !important; margin-left: 0 !important; }
+      .stat-item strong { font-size: 22px !important; text-align: left !important; display: block !important; }
+      .stat-item span { font-size: 12px !important; text-align: left !important; display: block !important; }
+      .stat-icon { margin: 0 !important; width: 48px !important; height: 48px !important; flex-shrink: 0 !important; }
       .section { padding: 58px 0; }
       .cta-box { padding: 42px 28px 240px; }
       .cta-box::after { width: 86vw; right: -25px; bottom: -56px; }

@@ -665,9 +665,24 @@
       .hero { min-height:620px; align-items:flex-start; padding-top:132px; background-position:62% center; }
       .hero-copy { padding-top:0; padding-bottom:86px; }
       .stats-bar, .project-grid, .cap-grid, .showcase-grid, .timeline, .trust-grid, .industry-grid, .footer-grid, .cta .container { grid-template-columns:1fr; }
-      .stats-bar { margin-top:0; width:100%; border-radius:0; }
-      .stat-item { border-right:0; border-bottom:1px solid rgba(255,255,255,.16); padding:0 0 16px; }
-      .stat-item:last-child { border-bottom:0; }
+      .stats-bar { margin-top:0; width:100%; border-radius:0; padding: 24px 20px; gap: 16px; }
+      .stat-item { 
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 18px !important;
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,.16) !important;
+        padding: 14px 10px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 320px !important;
+      }
+      .stat-item:last-child { border-bottom: 0 !important; padding-bottom: 0 !important; }
+      .stat-item div { text-align: left !important; margin-left: 0 !important; }
+      .stat-item strong { font-size: 22px !important; text-align: left !important; display: block !important; }
+      .stat-item span { font-size: 12px !important; text-align: left !important; display: block !important; }
+      .stat-icon { margin: 0 !important; width: 48px !important; height: 48px !important; flex-shrink: 0 !important; }
       .section { padding:54px 0; }
       .project-img { height:180px; }
       .project-img img { max-height:168px; }
