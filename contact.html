@@ -199,7 +199,7 @@
               <div class="form-group">
                 <label for="fullName">FULL NAME <span class="req">*</span></label>
                 <div class="input-dynamic-box">
-                  <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required autocomplete="name">
+                  <input type="text" id="fullName" name="name" class="form-control" placeholder="Enter your full name" required autocomplete="name">
                 </div>
                 <div class="field-error-msg" id="fullNameError">Please enter your full name</div>
               </div>
@@ -207,7 +207,7 @@
               <div class="form-group">
                 <label for="companyName">COMPANY NAME</label>
                 <div class="input-dynamic-box">
-                  <input type="text" id="companyName" class="form-control" placeholder="Enter company name" autocomplete="organization">
+                  <input type="text" id="companyName" name="company" class="form-control" placeholder="Enter company name" autocomplete="organization">
                 </div>
               </div>
             </div>
@@ -217,7 +217,7 @@
               <div class="form-group">
                 <label for="phoneNum">PHONE NUMBER <span class="req">*</span></label>
                 <div class="input-dynamic-box">
-                  <input type="tel" id="phoneNum" class="form-control" placeholder="Enter phone number" required autocomplete="tel">
+                  <input type="tel" id="phoneNum" name="phone" class="form-control" placeholder="Enter phone number" required autocomplete="tel">
                 </div>
                 <div class="field-error-msg" id="phoneNumError">Please enter a valid phone number</div>
               </div>
@@ -225,7 +225,7 @@
               <div class="form-group">
                 <label for="emailAddr">EMAIL ADDRESS <span class="req">*</span></label>
                 <div class="input-dynamic-box">
-                  <input type="email" id="emailAddr" class="form-control" placeholder="Enter email address" required autocomplete="email">
+                  <input type="email" id="emailAddr" name="email" class="form-control" placeholder="Enter email address" required autocomplete="email">
                 </div>
                 <div class="field-error-msg" id="emailAddrError">Please enter a valid email address</div>
               </div>
@@ -235,7 +235,7 @@
             <div class="form-group">
               <label for="reqType">REQUIREMENT TYPE <span class="req">*</span></label>
               <div class="custom-select-wrap">
-                <select id="reqType" class="form-control select-dynamic" required>
+                <select id="reqType" name="service" class="form-control select-dynamic" required>
                   <option value="" disabled selected>Select requirement type</option>
                   <option value="chemical">Chemical Processing Equipment (Reactors, Columns, Agitators)</option>
                   <option value="pharma">Pharmaceutical SS Equipment (SS316 / Sanitary Grade)</option>
@@ -272,7 +272,7 @@
                 <span class="char-count" id="charCount">0 / 1000</span>
               </div>
               <div class="input-dynamic-box">
-                <textarea id="projDetails" class="form-control textarea-dynamic" maxlength="1000" placeholder="Tell us about your project, specifications, capacity, material, etc." required></textarea>
+                <textarea id="projDetails" name="message" class="form-control textarea-dynamic" maxlength="1000" placeholder="Tell us about your project, specifications, capacity, material, etc." required></textarea>
               </div>
               <div class="field-error-msg" id="projDetailsError">Please tell us about your project specifications</div>
             </div>
