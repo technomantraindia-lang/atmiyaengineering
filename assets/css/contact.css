@@ -1584,6 +1584,10 @@ textarea.form-control.textarea-dynamic {
   margin-top: 3px;
 }
 
+@media (min-width: 993px) {
+  .faq-card-full { grid-column: span 2; }
+}
+
 /* ---- RESPONSIVE CONTACT STYLES ---- */
 @media (max-width: 992px) {
   .contact-hero { padding: 110px 0 60px !important; }
@@ -1595,7 +1599,8 @@ textarea.form-control.textarea-dynamic {
   .discuss-grid { grid-template-columns: 1fr; }
   .ways-grid { grid-template-columns: repeat(2, 1fr); }
   .facility-grid { grid-template-columns: 1fr; }
-  .faq-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .faq-item-card { grid-column: span 1 !important; width: 100% !important; box-sizing: border-box !important; }
 }
 
 @media (max-width: 768px) {
